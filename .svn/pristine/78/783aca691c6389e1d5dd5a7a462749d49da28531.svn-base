@@ -1,0 +1,26 @@
+package locator;
+
+import locator.preview.Location;
+import net.iakovlev.timeshape.TimeZoneEngine;
+
+import java.time.ZoneId;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class IssLogic {
+	
+	private static TimeZoneEngine timeZoneEngine;
+	
+	public IssLogic() {
+		timeZoneEngine = TimeZoneEngine.initialize();
+	}
+	
+	public static  Map<Location, String> computeTimeFromLocation(List<Location> coordinate) {
+		List<ZoneId> zoneIds = coordinate.stream()
+			.map(location -> timeZoneEngine.query(location.lat(), location.lon()).get())
+			.collect(Collectors.toList());
+		System.out.println(zoneIds);
+		return Map.of();
+  }
+}

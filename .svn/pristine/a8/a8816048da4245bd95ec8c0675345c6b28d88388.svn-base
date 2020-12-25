@@ -1,0 +1,7 @@
+package factorial;
+
+public class FactorialRecursiveTest implements FactorialTest{
+  public Factorial factorial() {
+    return new FactorialRecursive();
+  }
+}

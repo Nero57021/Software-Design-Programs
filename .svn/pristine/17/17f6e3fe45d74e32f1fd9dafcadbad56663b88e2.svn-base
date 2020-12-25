@@ -1,0 +1,147 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.IssInformationService;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class IssInformationTest {
+
+  public static IssInformation issInformation;
+
+  @BeforeAll
+  static void init() {
+    issInformation = new IssInformation();
+  }
+
+  private IssInformationService informationServiceThatReturnsTime() { //Feedback: Please remove
+    return new IssInformationService() {
+      @Override
+      public String setIssInformationService(Location location) {
+        return "11:58PM";
+      }
+    };
+  }
+
+  @Test
+  void canary() {
+    assert (true);
+  }
+
+  @Test
+  void givenEmptyListOfLocationReturnEmptyList() {
+
+    assertEquals(Map.of(), issInformation.getListOfTimesForLocations(List.of()));
+  }
+
+  @Test
+  void givenListOfLocationsReturnAListOfTime() {
+
+    IssInformationService issInformationServiceMock = informationServiceThatReturnsTime();
+    //Feedback: Please use Mockito instead
+
+    issInformation.setIssInformationService(issInformationServiceMock);
+
+    assertEquals(Map.of(new Location(29.7604, -95.3698), "11:58PM"),
+      issInformation.getListOfTimesForLocations(List.of(new Location(29.7604, -95.3698))));
+
+  }
+
+
+  @Test
+  void givenTwoLocationReturnTimeForBothLocation() {
+    IssInformationService issInformationServiceMock = informationServiceThatReturnsTime();
+
+    issInformation.setIssInformationService(issInformationServiceMock);
+
+    assertEquals(Map.of(
+      new Location(29.7604, -95.3698), "11:58PM",
+      new Location(30.2672, -97.7431), "11:58PM"), //Feedback: the time should not be the same
+      issInformation.getListOfTimesForLocations(List.of(
+        new Location(29.7604, -95.3698),
+        new Location(30.2672, -97.7431)
+      )));
+  }
+
+  @Test
+  void givenThreeLocationReturnTimeForThreeLocation() {
+    IssInformationService issInformationServiceMock = informationServiceThatReturnsTime();
+
+    issInformation.setIssInformationService(issInformationServiceMock);
+
+    assertEquals(Map.of(
+      new Location(29.7604, -95.3698), "11:58PM",
+      new Location(30.2672, -97.7431), "11:58PM",//Feedback: the time should not be the same
+      new Location(35.2220, -101.831), "11:58PM"),//Feedback: the time should not be the same
+      issInformation.getListOfTimesForLocations(List.of(
+        new Location(29.7604, -95.3698),
+        new Location(30.2672, -97.7431),
+        new Location(35.2220, -101.831)
+      )));
+  }
+
+  @Test
+  void givenThreeLocationReturnsTimeForTwoLocationAndErrorForLocation() {
+  //Feedback: tests should not get complicated and out of hand. We should stop when this happens
+  //and ask, what are we doing and what should we change.
+    IssInformationService issInformationServiceInvalidError = new IssInformationService() {
+      @Override
+      public String setIssInformationService(Location location) {
+        try {
+          if (!(location.lat() <= 90.0 && location.lat() >= -90.0 && location.lon() <= 180.0 && location.lon() >= -180.0)) {
+            throw new RuntimeException("invalid location");
+          }
+        } catch (Exception ex) {
+          return ex.getMessage(); //Feedback: there is really no point in throwing and catching in the same function, ever.
+        }
+        return "11:58PM";
+      }
+    };
+
+    issInformation.setIssInformationService(issInformationServiceInvalidError);
+
+    assertEquals(Map.of(
+      new Location(29.7604, -95.3698), "11:58PM",
+      new Location(100, 190), "invalid location",
+      new Location(30.2672, -97.7431), "11:58PM"),
+      issInformation.getListOfTimesForLocations(List.of(
+        new Location(29.7604, -95.3698),
+        new Location(30.2672, -97.7431),
+        new Location(100, 190)
+      )));
+  }
+
+  @Test
+  void givenListOfLocationReturnsTimeForFirstTwoLocationThirdLocationFails() {
+    IssInformationService issInformationServiceNetworkError = new IssInformationService() {
+      @Override
+      public String setIssInformationService(Location location) {
+        try {
+          if (!(location.lat() <= 90.0 && location.lat() >= -90.0 && location.lon() <= 180.0 && location.lon() >= -180.0)) {
+            throw new RuntimeException("network error");
+          }
+        } catch (Exception ex) {
+          return ex.getMessage();
+        }
+        return "11:58PM";
+      }
+    };
+
+    issInformation.setIssInformationService(issInformationServiceNetworkError);
+
+    assertEquals(Map.of(
+      new Location(29.7604, -95.3698), "11:58PM",
+      new Location(30.2672, -97.7431), "11:58PM",
+      new Location(100, 190), "network error"),
+      issInformation.getListOfTimesForLocations(List.of(
+        new Location(29.7604, -95.3698),
+        new Location(30.2672, -97.7431),
+        new Location(100, 190)
+      )));
+  }
+}

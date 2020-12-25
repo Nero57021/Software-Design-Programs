@@ -1,0 +1,140 @@
+[Reviewed 09/26/20 04:32 AM MDT]
+synopsis:  let's rethink the design
+
+details: 
+
+We currently have a function that counts the number of neighbors given a list of positions. It returns a single number but that is not much help. Let's rethink.
+
+We have a way to go from a bunch of live cells to signals for those live cells. That is we can get a list of signals. Now we want to take a list of signals and find how many live neighbors exists around cells. We don't need to worry about those with zero signals, they have no live neighbors. If there is one signal for say cell at (1, 2), then there is one live neighbors for it. If there are two signals for it, then there are two. But, we want that information for each of the signals in the list.
+
+------------------------------------------------------------------------------
+[Reviewed 09/25/20 08:57 AM MDT]
+synopsis:  let's simplify
+
+details: 
+
+Please see suggestions in code.
+
+After that, please think of the next steps. and take a small step.
+
+------------------------------------------------------------------------------
+[Reviewed 09/25/20 05:48 AM MDT]
+synopsis:  previous feedback notes still in code
+
+details: 
+
+Feedback from previous review are still in code. Please address, remove those feedback notes from code, and then drop an email for the review to continue.
+
+------------------------------------------------------------------------------
+[Reviewed 09/24/20 05:15 AM MDT]
+synopsis:  let's proceed with the signals
+
+details: 
+
+We started with the signals, let's proceed with that.
+
+The universe is infinitely. We can't obviously be iterating through each cell 
+on a grid. The good news is that the life is sparse, relative to the universe.
+We can have each live cell generate signals to its neighbors. Based on the 
+number of signals received at a cell position, we can determine life or death
+at that position. To approach this design, we will implement two functions:
+1. generateSignalsForOnePosition
+2. generateSignalsForMultiplePositions
+
+- given a live cell at position 2, 3, it generates eight signals for positions (1, 2), (1, 3), (1, 4), (2, 2), (2, 4), (3, 2), (3, 3), (3, 4)
+- given a live cell at position 3, 3, it generates eight signals for positions (2, 2), (2, 3), (2, 4), (3, 2), (3, 4), (4, 2), (4, 3), (4, 4)
+- given a live cell at positions 2, 4 it generates eight signals for positions (1, 3), (1, 4), (1, 5), (2, 3), (2, 5), (3, 3), (3, 4), (3, 5)
+- given a live cell at position 0, 0 it generates eight signals for positions (-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)
+- given no position, generateSignalsForMultiplePositions returns an empty list
+- given one position, generateSignalsForMultiplePositions returns eight positions
+- given two positions, generateSignalsForMultiplePositions returns sixteen positions
+- given three positions, generateSignalsForMultiplePositions returns twenty four positions
+
+------------------------------------------------------------------------------
+[Reviewed 09/23/20 05:53 AM MDT]
+synopsis: good so far
+
+details: 
+
+Please do not leave comments in code. Use email to communicate if you want to ask a question or share an experience.
+
+Please see suggestions in code.
+
+Let's proceed to the next step.
+
+------------------------------------------------------------------------------
+[Reviewed 09/22/20 03:57 AM MDT]
+synopsis:  awesome next step, I guess
+
+details: 
+
+Nice next step. Either you are amazing at thinking through the 
+design (which is awesome) or you are copying from a previous semester (which 
+deprives you of developing skills to think and discover).
+
+------------------------------------------------------------------------------
+[Reviewed 09/21/20 09:44 AM MDT]
+synopsis:  good so far
+
+details: 
+
+Give space after comma, please.
+
+Good so far. Please see the notes at the bottom of tests.txt.
+
+------------------------------------------------------------------------------
+[Reviewed 09/21/20 05:00 AM MDT]
+synopsis:  previous feedback notes still in code
+
+details: 
+
+Feedback from previous review are still in code. Please address, remove those feedback notes from code, and then drop an email for the review to continue.
+
+------------------------------------------------------------------------------
+[Reviewed 09/20/20 05:55 AM MDT]
+synopsis:  good work so far
+
+details: 
+
+Good work so far.
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 09/19/20 08:24 AM MDT]
+synopsis:  good to see early start
+
+details: 
+
+Good to see early start. Let's take small steps.
+
+First tests:
+- canary test
+- a dead cell with zero neighbors stays dead
+- a dead cell with one neighbors stays dead
+- a dead cell with two neighbors stays dead
+- a dead cell with five neighbors stays dead
+- a dead cell with eight neighbors stays dead
+- a dead cell with three neighbors comes to life
+- a live cell with one live neighbors dies
+- a live cell with four live neighbors dies
+- a live cell with eight live neighbors dies
+- a live cell with two live neighbors lives
+- a live cell with three live neighbors lives
+
+A CI build has been setup for your project.
+You can see files related to this under assign1.
+
+How does this work?
+When you check in code, the CI build machine wakes up, fetches the latest version of your code, and runs the file build.bat that is under your repository (above assign1). That file in turn runs the build scripts in your assign1 directory.
+
+In case you missed it, please read:
+<https://groups.google.com/g/uhcsf20sd/c/SD6jCvbX5CY/m/vlCgeOhFBgAJ>.
+
+Also, please keep an eye on code coverage. To view the code coverage, please run the build using the following command (do not click or double click, instead open the command prompt, cd to your assign1 directory, and then run from there).
+
+gradlew
+Then take a look at the file (using a browser):
+build/reports/jacoco/test/html/index.html
+
+------------------------------------------------------------------------------

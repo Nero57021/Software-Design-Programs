@@ -1,0 +1,19 @@
+package processor;
+
+import org.junit.jupiter.params.provider.Arguments;
+import java.util.stream.Stream;
+
+public class UppercaseZBlockerBlockTest implements BlockProcessorTest {
+  private static Stream<Arguments> testSamples() {
+    return Stream.of(
+      Arguments.of("Z", ""),
+      Arguments.of("aZ", "a"),
+      Arguments.of("1", "1"),
+      Arguments.of("~", "~"),
+      Arguments.of("", "")
+    );
+  }
+
+  @Override
+  public String processor(String input) {return BlockProcessor.createBlocker(input).apply("Z");}
+}

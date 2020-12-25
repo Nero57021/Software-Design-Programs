@@ -1,0 +1,35 @@
+package processor;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class ProcessorTest {
+
+  @Test
+  void canary() {  //Feedback: *2 Do we need canary test in multiple test classes?
+    assertTrue(true);
+  }
+
+  @Test
+  void givenListOfProcessAndInputReturnOutput() { //Feedback: please remove
+    assertEquals("abc", Processor.processInput(
+      List.of(
+        BlockProcessor.upperCaseConverterBlock,
+        BlockProcessor.createBlocker("Z"),
+        BlockProcessor.lowerCaseConverterBlock), "abCz"));
+  }
+  
+  //Feedback:  let's write one test for each of the lines below
+  //-processor takes string "abzCd" and no blocks, returns given string
+  //-processor takes string "abzCd" and uppercase block, returns string in uppercase
+  //-processor takes string "abzCd" and lowercase block, returns string in lower case
+  //-processor takes string "abzCd" and multiplier block, returns string with letters repeated, that is aabbzzCCdd
+  //-processor takes string "abzcd" and uppercase block and Z blocker, returns ABCD
+  //-processor takes string "abzcd" and Z blocker and uppercase, returns ABZCD
+  //-processor takes string "abzcd" and uppercase and multiplier
+  //-processor takes string "abzcd" and Z blocker, uppercase, and multiplier
+}

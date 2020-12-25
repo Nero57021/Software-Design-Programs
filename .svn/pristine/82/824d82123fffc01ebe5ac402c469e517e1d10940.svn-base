@@ -1,0 +1,77 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.IssInformationService;
+import locator.service.OpenNotifyLocationWebService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+
+public class OpenNotifyLocationWebServiceTest {
+
+  public OpenNotifyLocationWebService webService;
+
+  String VALID_JSON_RESPONSE = "{\"message\":\"success\",\"request\":{\"altitude\":100,\"datetime\":1602201251,\"latitude\":29.72167,\"longitude\":-95.343631,\"passes\":1},\"response\":[{\"duration\":645,\"risetime\":%d}]}";
+
+  @BeforeEach
+  void init() {
+    webService = new OpenNotifyLocationWebService();
+  }
+
+  @Test
+  void getRawResponseTakesURLReturnsPassesLatAndLong() throws Exception {
+
+    assertTrue(webService.getRawResponse(29.72167, -95.343631).contains("passes"));
+    assertTrue(webService.getRawResponse(29.72167, -95.343631).contains("latitude"));
+    assertTrue(webService.getRawResponse(29.72167, -95.343631).contains("longitude"));
+
+  }
+
+  @Test
+  void parseJSONTakesRawJSONReturnsTime() {
+    assertAll(
+      () -> assertEquals("1602203714", webService.parseJSON(String.format(VALID_JSON_RESPONSE, 1602203714))),
+      () -> assertEquals("1602209521", webService.parseJSON(String.format(VALID_JSON_RESPONSE, 1602209521)))
+    );
+  }
+
+
+  @Test
+  void getFlyOverTimeTakesLocationReturnResponseFromParseJSON() throws Exception {
+    String rawJSON = String.format(VALID_JSON_RESPONSE, 1602209521);
+
+    webService = spy(OpenNotifyLocationWebService.class);
+    doReturn(rawJSON).when(webService).getRawResponse(29.72167,-95.343631);
+    doReturn("1602209521").when(webService).parseJSON(rawJSON);
+
+    assertEquals("02:12AM", webService.getFlyOverTimeForLocation(new Location(29.72167,-95.343631)));
+  }
+
+  @Test
+  void invalidLatGetFlyOverTimeTakesLocationReturnInvalidLocation() {
+
+    assertEquals("invalid location", webService.getFlyOverTimeForLocation(new Location(129.72167, -95.343631)));
+  }
+
+  @Test
+  void invalidLongGetFlyOverTimeTakesLocationReturnInvalidLocation() {
+
+    assertEquals("invalid location", webService.getFlyOverTimeForLocation(new Location(29.72167, -952.343631)));
+  }
+
+  @Test
+  void invalidLAtLonGetFlyOverTimeTakesLocationReturnInvalidLocation() {
+
+    assertEquals("invalid location", webService.getFlyOverTimeForLocation(new Location(129.72167, -952.343631)));
+  }
+
+  @Test
+  void setWebService(){
+    IssInformationService issInformationService = new OpenNotifyLocationWebService();
+
+    assertTrue(true);
+  }
+}

@@ -1,0 +1,130 @@
+[Reviewed 09/17/20 04:58 AM MDT]
+synopsis:  most feedback on diagram from previous review not addressed yet
+
+details: 
+
+Diagram:
+If a neighbor is a cell, should then a line go from cell to cell instead of having a separate neighbor? In this case should the cardinality be shown as 8 on that line?
+
+The diagram shows that a cell owns a boundary. Did we mean that or did we mean that cells belong to a boundary?
+
+Let's show a clear separation of GUI from logic in the diagram.
+
+Text:
+
+2.
+Good
+
+------------------------------------------------------------------------------
+[Reviewed 09/16/20 05:58 AM MDT]
+synopsis:  let's revisit the diagram
+
+details: 
+
+Diagram:
+
+We should not show 1 since that is the default. Remove 1 to 1.
+
+Does a cell have only one neighbor? How is a neighbor different from a Cell?
+
+The diagram shows that many cells own one boundary. Did we mean that?
+
+Let's show a clear separation of GUI from logic in the diagram.
+
+Text:
+
+1.
+Good details here.
+
+2.
+Many other languages have the capabilities mentioned here, but why are we choosing Java instead of any of those?
+
+3.
+Good
+
+------------------------------------------------------------------------------
+[Reviewed 09/15/20 08:27 AM MDT]
+synopsis:  let's revisit the design details
+
+details: 
+
+Diagram:
+
+If a class is shown in a relationship, then we should not also show it as a field.
+
+Please remove words like Utilizes and many to one. Instead use the UML notation with arrows, cardinality (number), etc.
+
+We should not show 1 since that is the default. Remove 1 to 1.
+
+Are there any relationship that is an aggregation or are all the relationships association?
+
+Does a cell have only one neighbor? How is a neighbor different from a Cell?
+
+Let's show a clear separation of GUI from logic in the diagram.
+
+Text:
+
+1.
+
+
+Let's keep things in short paragraphs-good work on keeping text in short paragraphs.
+
+Let start with a short paragraph with some high level details, observations, key concerns.
+
+Then in short paragraphs let's provide details about our design, the decisions we are making and the reasons.
+
+Then lets' write short paragraphs discussing further details about the key elements in the diagram.
+
+Finally, we can make any concluding remarks in the last paragraph.
+
+
+Please remove 
+"In case the jpg file is missing, please
+Please see the viewable diagram from the link below." We need the diagram in the version control. Please remove the link from part 1.
+
+2.
+Many other languages have the capabilities mentioned here, but why are we choosing Java instead of any of those?
+
+3.
+
+"we plan to utilize JUnit for "
+https://grammarist.com/grammar/use-vs-utilize/
+
+
+------------------------------------------------------------------------------
+[Reviewed 09/15/20 04:46 AM MDT]
+synopsis:  did not find diagram
+
+details: 
+
+Did not find diagram in the hw1 directory. Once that is checked in please drop an email for review to continue.
+
+------------------------------------------------------------------------------
+[Reviewed 09/12/20 05:54 AM MDT]
+synopsis: Good to see early start. Diagram missing in the repository
+
+details: 
+
+Diagram:
+Please check in the diagram into the repository.
+
+Text:
+
+1.
+Provide details about the design and design decisions in part 1.
+
+2.
+"For this game a good programming language to use is Java"
+Rather than generalization, it is better instead to focus on what we want to use.
+
+Many other languages have the capabilities mentioned here, but why are we choosing Java instead of any of those?
+
+3.
+"We plan on utilizing "
+https://grammarist.com/grammar/use-vs-utilize/
+
+"initialing the board"  initializing?
+
+"A good compilers we can use is Maven" Maven is not a compiler.
+
+------------------------------------------------------------------------------

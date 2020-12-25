@@ -1,0 +1,57 @@
+package processor;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ProcessorTest {
+
+  @Test
+  void givenAStringAndNoBlocksReturnGivenString() {
+    assertEquals("abzCd", Processor.processInput("abzCd"));
+  }
+
+  @Test
+  void givenAStringUppercaseBlockReturnString() {
+    assertEquals("ABZCD", Processor.processInput("abzCd", BlockProcessor::upperCaseConverterBlock));
+  }
+
+  @Test
+  void givenAStringLowercaseBlockReturnString() {
+    assertEquals("abzcd", Processor.processInput("abzCd", BlockProcessor::lowerCaseConverterBlock));
+  }
+
+  @Test
+  void givenAStringMultiplierBlockReturnString() {
+    assertEquals("aabbzzCCdd", Processor.processInput("abzCd", BlockProcessor::multiplierBlock));
+  }
+
+  @Test
+  void givenAStringUppercaseAndZBlockerBlockReturnString() {
+    assertEquals("ABCD", Processor.processInput("abzcd",
+      BlockProcessor::upperCaseConverterBlock,
+      BlockProcessor.createBlocker("Z")));
+  }
+
+  @Test
+  void givenAStringZBlockerAndUppercaseBlockReturnString() {
+    assertEquals("ABZCD", Processor.processInput("abzcd",
+      BlockProcessor.createBlocker("Z"),
+      BlockProcessor::upperCaseConverterBlock));
+  }
+
+  @Test
+  void givenAStringUppercaseAndMultiplierBlockReturnString() {
+    assertEquals("AABBZZCCDD", Processor.processInput("abzcd",
+      BlockProcessor::upperCaseConverterBlock,
+      BlockProcessor::multiplierBlock));
+  }
+
+  @Test
+  void givenAStringZBlockerUppercaseAndMultiplierBlockReturnString() {
+    assertEquals("AABBZZCCDD", Processor.processInput("abzcd",
+      BlockProcessor.createBlocker("Z"),
+      BlockProcessor::upperCaseConverterBlock,
+      BlockProcessor::multiplierBlock));
+  }
+}

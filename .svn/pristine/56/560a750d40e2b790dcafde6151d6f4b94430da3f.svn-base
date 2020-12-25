@@ -1,0 +1,30 @@
+x canary test
+
+uppercase:
+x convert "A" to "A"
+x convert "a" to "A"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+lowercase:
+x convert "A" to "a"
+x convert "a" to "a"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+multiplier:
+x convert "A" to "AA"
+x convert "a" to "aa"
+x convert "1" to "11"
+x convert "~" to "~~"
+x convert "" to ""
+
+Blocker:
+x convert "z" to ""
+x convert "Z" to ""
+x convert "k" to ""
+x convert "~" to "~"
+x convert "1" to "1"
+x convert "" to ""

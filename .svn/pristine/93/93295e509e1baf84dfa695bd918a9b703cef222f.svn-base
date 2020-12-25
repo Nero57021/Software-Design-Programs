@@ -1,0 +1,32 @@
+package factorial;
+
+import java.math.BigInteger;
+import java.util.stream.Stream;
+
+public class Factorial {
+
+  public static BigInteger imperativeFactorial(long number) {
+    BigInteger product = BigInteger.ONE;
+
+    for (int i = 1; i <= number; i++) {
+      product = product.multiply(new BigInteger(String.valueOf(i)));
+    }
+
+    return product;
+  }
+
+  public static BigInteger recursiveFactorial(long number) {
+    if (number == 0) {
+      return BigInteger.ONE;
+    }
+
+    return BigInteger.valueOf(number).multiply(recursiveFactorial(number - 1));
+  }
+
+  public static BigInteger functionalFactorial(long number) {
+    return Stream.iterate(BigInteger.ONE, i -> i.add(BigInteger.ONE))
+      .limit(number)
+      .reduce(BigInteger.ONE, BigInteger::multiply);
+  }
+
+}

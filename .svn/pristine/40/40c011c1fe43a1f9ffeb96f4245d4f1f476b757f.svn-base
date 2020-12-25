@@ -1,0 +1,48 @@
+package ui;
+
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Processor { //Feedback: let's remove this for now, we can get to this later.
+
+  public static String convertBlock(String processorBlock, String block) {
+    return block;
+  }
+
+  public static String fileReader(String block) {
+    try {
+
+      FileReader fr = new FileReader("processor.txt");
+      Scanner scanner = new Scanner(fr);
+
+      while (scanner.hasNextLine()) {
+        String processorBlock = scanner.next();
+        System.out.println(processorBlock);
+        block = convertBlock(processorBlock, block);
+      }
+
+      System.out.println(block);
+
+    } catch (Exception ex) {
+      System.out.println("Unable to read file");
+    }
+    return block;
+  }
+
+  public static void main(String[] args) {
+
+    String block = "11abcdabcdabcdzzaazzabcd";
+
+    Scanner myObj = new Scanner(System.in);
+    System.out.println("1. Use predefined block. \n2. Create a block");
+
+    String userChoice = myObj.next();
+
+    if (userChoice.equals("2")) {
+      System.out.println("Enter your block: ");
+      block = myObj.next();
+    }
+    System.out.println(fileReader(block));
+
+  }
+}

@@ -1,0 +1,91 @@
+Assign3: Due 11:59PM November 6
+
+The Factorial of a number is the product of all numbers in the range 1 to the number.
+
+Write three implementations of a function to compute the Factorial of a number.
+
+Please start with one implementation at a time rather than rushing through all of them at the same time.
+
+The implementations are described below:
+
+1. An imperative iteration. 
+  Given a number, loop through using traditional for.
+
+2. A simple recursion.
+  
+3. A functional iteration. 
+	  Use functional internal iterators to perform the operation.
+
+Once you complete coding, please answer the following:
+
+1. What design principles did you use in this assignment? Discuss.
+
+The program covered designing code while sticking to SOLID design principles. In this assignment we primarily
+encountered design problems concerning SRP, DRY, SLAP and YAGNI.
+
+We violated DRY during unit testing by rewriting the test for each method and repeating it. Elaborating further, we had a difficult time trying to comply with the DRY 
+principle while unit testing each method. The way we were previously conducting it was multiple tests would be written for each method,
+and it wasn't until we utilized particular design patterns that we were able to find a solution to our problem.
+
+SRP would be a regular, but common problem during our course of building the program. From simple things like neat variable names, 100% test coverage, and to keeping methods and 
+test singularly focused.In particular, we mainly had trouble with keeping our test focused as we had two instances where we tried to make the test do multiple things at once and 
+neither did its purpose well enough. The other example would be keeping our methods focused as we had tried to account for exceptions or when we were trying to implement the interface
+ in the test, there was a class that would invoke more than one method which goes against its singular responsibility.
+
+Keeping our code on a single level of abstraction and following the SLAP principle was particularly difficult towards the end when we were redesigning our code. In particular,
+it was when we were trying to combine the methods into one. We did not easily arrive at our solution because we kept violating SLAP, and only then when we made it an interface 
+that grouped the static methods were we able to solve the problem.
+
+Finally, the YAGNI principle was taken into account because of pattern implementation. Earlier on, we implemented the abstract factory inside factorial class
+method as that is what our initial lead to our solution would be. But, we later took it out because it became redundant and became something unnecessary when 
+we implemented the factory method inside factorial test.
+
+Overall the program helped taught us about the importance of these principles and how easy it is to violate them in an attempt to find a solution to our design issue.
+
+2. What design patterns did you use? List each one of them, discuss what this pattern is, and give example(s) of where specifically you used it in this assignment.
+
+This assignment allowed us to experiment with multiple design patterns while building the program. Specifically, we utilized abstract factory, factory method, and finally
+cascade method pattern.
+
+One of the noticeable patterns we used to achieve our solution was abstract factory. This pattern was used because we needed to create a group of related objects without
+specifying their concrete class. We first implemented a Factorial interface that has one method, where the classes such as FactorialFunction implements the Factorial interface. In that class,
+we override the method to its needs. Later on, we refactored and removed abstract factory and replaced it with factory method. We came to the decision that the YAGNI principle 
+render the abstract factory redundant as it was a pattern that was implemented with no use to our current solution and factory method was better suited.
+
+Another pattern we used is factory method. We needed this pattern to be able to write the non-duplicating test for our methods.
+Where the interface(factorialTest) had the tests which called on its subclasses that invoke the three different methods of factorial in our program. To elaborate,
+the factory method is used in the subclasses of the test interface in order to override the method and invoke the desired instantiation.
+This pattern allowed us to follow the DRY principle by giving us a way to invoke the different methods without the need to rewrite the tests for each method.
+
+The final pattern we used is the cascading method pattern. This pattern helped simplify and reduce the code inside two of our factorial methods - recursiveFactorial and 
+functionalFactorial. This not only helped the code look better, but it also prevented us from needing to store the data or having a variable hold it which prevents other 
+issues from popping up.
+
+3. Any surprises or things that you did not expect?
+
+Throughout the process of building the program, we encountered problems or obstacles that we typically did not expect. One of them was the issue of converging the three different methods
+of factorial into one. Per our usual approach and experience, we had made an interface and three concrete classes that implements it. The issue then comes in reducing the redundancy and bundling
+it into one. This was particularly difficult because we were trying to implement and redesign our program far differently than we are normally used to.
+
+It was only through the use of patterns that we were able to find a suitable solution for our problem. Furthermore, We could not blindly implement patterns of the top of our head, but 
+instead research and gain more understanding of the particular problem we were facing in order to find the perfect fit pattern that would help us solve our specific problem. It's 
+different from how we use patterns before in lower-level CS classes where we build around the pattern, this time we identified the problem first, understood it, and then redesigned 
+the code with the pattern in mind to fit our solution.
+
+Another one was the BigInteger problem. When given an integer that was quite large, we had to research and find what data type could hold that many digits. And surprisingly 
+BigInteger exists to cover that. We haven't encountered such a large number before, usually, all numbers fall less than n^32, but that one test made us take on a number that 
+goes as far as n^100.
+
+
+Total [100]: 99
+All tests passing [20]:
+Code coverage [10]:
+Test quality [20]:
+Imperative solution [5]:
+Recursive solution [10]:
+Functional solution [10]:
+Principles question [10]:
+Patterns question [10]: -1
+The abstract factory was considered and discarded in a different place and context than where factory method was considered and used.
+
+Surprises/learnings question [5]:

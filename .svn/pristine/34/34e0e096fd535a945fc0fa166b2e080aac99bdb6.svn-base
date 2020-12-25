@@ -1,0 +1,23 @@
+package factorial;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public interface FactorialTest {
+
+  @BeforeEach
+  default void setUp(){
+    Factorial factorial = new Factorial();
+  }
+
+  @Test
+  default void canary() {
+    assertTrue(true);
+  }
+
+  @Test
+  void factorialCases();
+
+}

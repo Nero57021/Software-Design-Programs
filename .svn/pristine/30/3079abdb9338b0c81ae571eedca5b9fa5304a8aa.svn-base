@@ -1,0 +1,40 @@
+package factorial;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FactorialTest {
+
+  private Factorial factorial;
+
+  @BeforeEach
+  void setUp() {
+    factorial = new Factorial();
+  }
+
+  @Test
+  void canary() {
+    assert (true);
+  }
+
+  @Test
+  void factorialImperativeReturnsTheFactorialOfGivenNumber() {
+
+    assertAll(
+      () -> assertEquals(1, factorial.factorialImperative(0)),
+      () -> assertEquals(1, factorial.factorialImperative(1)),
+      () -> assertEquals(2, factorial.factorialImperative(2)),
+      () -> assertEquals(6, factorial.factorialImperative(3)),
+      () -> assertEquals(24, factorial.factorialImperative(4)),
+      () -> assertEquals(120, factorial.factorialImperative(5)),
+      () -> assertEquals(3628800, factorial.factorialImperative(10))
+    );
+  }
+
+  @Test
+  void givenNegativeNumberThrowsException() {
+    assertThrows(RuntimeException.class, () -> factorial.factorialImperative(-1));
+  }
+}

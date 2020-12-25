@@ -1,0 +1,31 @@
+package processor;
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public interface Processor {
+
+  static String upperCaseConverterBlock(String input) {return input.toUpperCase();}
+
+  static String lowerCaseConverterBlock(String input) {
+    return input.toLowerCase();
+  }
+
+  static String multiplierBlock(String input) {return input.chars().mapToObj(val -> Character.toString(val).repeat(2)).collect(Collectors.joining());}
+
+  //Feedback: duplication code below, let's keep it DRY
+  Function<String, String> lowercaseZBlocker = characterToBlock -> characterToBlock.replace("z", "");
+
+  Function<String, String> uppercaseZBlocker = characterToBlock -> characterToBlock.replace("Z", "");
+
+  Function<String, String> lowercaseKBlocker = characterToBlock -> characterToBlock.replace("k", "");
+
+  //Feedback: 
+  /*
+    static Function<String, String> createBlocker(... characterToBlock) {
+      here create a Function and return it (once instead of 3 times like above).
+      The Function defined inside createBlocker will take character as parameter and perform repalce on it for the
+      characterToBlock
+    }
+  */
+}

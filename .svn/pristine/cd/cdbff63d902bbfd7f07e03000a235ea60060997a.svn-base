@@ -1,0 +1,54 @@
+package processor;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProcessorTest {
+  Processor processor;
+  @BeforeEach
+  void setup()
+  {
+    processor = new Processor();
+  }
+  @Test
+  void canary(){
+    assertTrue(true);
+
+}
+
+  @Test
+  void upperCaseSequenceTest()
+  {
+    assertAll(
+            () -> assertEquals("ABCDEFG",processor.upperCaseConverterBlock("abcdefg")  ),
+            () -> assertEquals("ABCDEFG",processor.upperCaseConverterBlock("ABCDEFG")  ),
+            () -> assertEquals("ABCDEFG",processor.upperCaseConverterBlock("aBcDEfg")  ),
+            () -> assertEquals("1122233567",processor.upperCaseConverterBlock("1122233567")  ),
+            () -> assertEquals("11ABCDEFG",processor.upperCaseConverterBlock("11abcdefg")  ),
+            () -> assertEquals("11ABCDEFG",processor.upperCaseConverterBlock("11ABCDEFG")  ),
+            () -> assertEquals("11ABCDEFG",processor.upperCaseConverterBlock("11aBcDEfg")  ),
+            () -> assertEquals("",processor.upperCaseConverterBlock("")  )
+
+    );
+  }
+
+
+
+  @Test
+  void lowerCaseSequenceTest()
+  {
+    assertAll(
+            () -> assertEquals("abcdefg",processor.lowerCaseConverterBlock("abcdefg")  ),
+            () -> assertEquals("abcdefg",processor.lowerCaseConverterBlock("ABCDEFG")  ),
+            () -> assertEquals("abcdefg",processor.lowerCaseConverterBlock("aBcDEfg")  ),
+            () -> assertEquals("1122233567",processor.lowerCaseConverterBlock("1122233567")  ),
+            () -> assertEquals("11abcdefg",processor.lowerCaseConverterBlock("11abcdefg")  ),
+            () -> assertEquals("11abcdefg",processor.lowerCaseConverterBlock("11ABCDEFG")  ),
+            () -> assertEquals("11abcdefg",processor.lowerCaseConverterBlock("11aBcDEfg")  ),
+            () -> assertEquals("",processor.lowerCaseConverterBlock("")  )
+
+    );
+  }
+}

@@ -1,0 +1,31 @@
+package processor;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public interface Processor {
+
+  @SafeVarargs
+  static String processInput(String input, Function<String, String>... blocks) {
+
+    Function<String, String> combinedBlocks = Stream.of(blocks)
+      .reduce(Function.identity(), Function::andThen);
+
+    return Stream.of(input.split(""))
+      .map(combinedBlocks)
+      .collect(Collectors.joining(""));
+  }
+
+  //Feedback: the following does not belong here. SRP. It should be in a BlockAccessor class.
+
+  static Method getBlock(String input) throws NoSuchMethodException {
+    List<String> splitBlockInput = Arrays.asList(input.split(":"));
+
+    return BlockProcessor.class.getMethod(splitBlockInput.get(1), String.class);
+  }
+
+}

@@ -1,0 +1,36 @@
+package factorial;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.math.BigInteger;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public abstract class FactorialTest {
+
+  @BeforeEach
+   void setUp(){
+    Factorial factorial = new Factorial();
+  }
+
+  @Test
+  void canary() {
+    assertTrue(true);
+  }
+
+  abstract BigInteger factorialCases(long number);
+
+  @Test
+  void testCases(){
+    assertAll(
+      () -> assertEquals(new BigInteger("1"), factorialCases(0)),
+      () -> assertEquals(new BigInteger("1"), factorialCases(1)),
+      () -> assertEquals(new BigInteger("2"), factorialCases(2)),
+      () -> assertEquals(new BigInteger("6"), factorialCases(3)),
+      () -> assertEquals(new BigInteger("24"), factorialCases(4)),
+      () -> assertEquals(new BigInteger("30414093201713378043612608166064768844377641568960512000000000000"), factorialCases(50))
+    );
+  }
+
+}

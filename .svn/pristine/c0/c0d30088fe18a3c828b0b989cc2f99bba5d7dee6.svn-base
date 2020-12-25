@@ -1,0 +1,69 @@
+HW4 Due 11:59PM December 4th
+
+***There will be no reviews for this Homework***
+
+Feel free to give answers collectively, and also if you want to, you can call 
+out something specific to yourself different from your team member.
+
+1. What did you essentially learn in this course about design?
+
+Jeremy:
+
+Coming to this course I learned the most about test-driven design and the SOLID principle. To add to this, I also learned more about Java 8 and java 11.
+Specifically for java 8, I learned a lot about records that help utilize functionality similar to a library without using the whole library which would violate YAGNI.
+In our case, we were using the AWT library to find pointers for assignment 1. using records we were able to recreate the functionality of the AWT library, without having to specifically 
+call the entire library.
+
+For java 11, I learned a lot about Functions, where Functions allowed us to avoid rewriting the same code over and over again. Specifically with the blockers.
+This helped us learn about ways to follow DRY and keep code simple. It is both a convenient technique to know and use when it comes to making a simple, and clean code that is loosely coupled.
+
+When it comes to principles, we learned a lot from DRY. It is a simple principle, but surprisingly, we found it quite surprising how many times we repeat code. This along with the SLAP
+principle was both a core fundamental we had a hard time adjusting to. We find that when designing it's easy to get carried away and slip up on the abstraction of code and also ignore the numerous 
+duplicate code that is written. This is especially prevalent during testing, as it's easy to duplicate and write redundant copies of code to get good coverage of code.
+
+Overall, we have taken in a lot of knowledge about the class in terms of approaching the problem and creating the solution for it. We learned to follow design principles strongly as
+it not only prevented issues, but also allowed us to find clever solutions around each underlying principle that made our code better. I would also add that learning and utilizing patterns 
+in a new way is a great experience. In past classes, we were taught about it and it became a habit to force a pattern into the code, but now the better approach we learned from this class 
+is to approach the problem with the right pattern after it is written. That way, we don't write the code around a pattern, but refactor the code to the pattern that would solve our problem.
+
+
+Vyas: 
+
+One of the most important things we learned was adhering to the style of test-driven design. Coming from other classes and previous experience about writing code to test, and not writing tests 
+that will specify the code's objective is one of the core mistakes we had coming to this course. It was hard to unlearn and proved to be quite a difficult feat because we had become used to 
+writing and creating programs without any design principles to follow beforehand. 
+
+This class has taught me a lot about different design principles and patterns. We have learned about the concept in other courses, and we didn't know good patterns or designs. We used C++ in other classes, 
+but this class has taught me more about Java, such as the Function and records.  
+
+For Records, we had trouble regarding the use of the AWT util library regarding making the object Point, but when we learned about records, it made it easier and gave us an alternative shortcut 
+to not use the whole library and use only a specific portion of it. This helped me learn more about java 14/15 and the preview feature. Using this has improved our coding design and practices where 
+we do not needlessly use a library or implement code that violates YAGNI. 
+
+About Function, this allowed us to find a way around the DRY principle for assignment 4. Learning about Function allowed us to write the code to implement a blocker that wasn't hardcoded to block 
+specific characters. Instead, this was more configurable, as we were allowed to specify what kind of character will be blocked in the test without having multiple copies of the same type of input.
+
+
+2. What are some of the general guidelines you would follow when designing?
+
+From the beginning of designing the program, it is best to strictly follow the design principles in order to avoid problems and create a well-structured code.
+One of the common problems from our experience in creating a program that violates YAGNI in the beginning. We found this to be a common prevalent issue, as we would
+use a library or implement methods that were otherwise not needed yet, or wasn't accounted for in our written tests. By being careful and following the SOLID principle, it helps avoid
+DRY and other problems such as SLAP. While also keeping the code in check with SRP.
+
+One thing we learned that became a really valuable tool in designing and testing our program is creating and using mocks properly. This was especially helpful in assignment 2 when we were simulating
+the responses of the API call. Being able to test mocks is a helpful tool to learn for testing because it allows us to simulate whether our methods are properly working before connecting to the API.
+Additionally, it ensures that changes in the program such as migration to another API, or network failures can be tested for and properly caught in exception handlings.
+
+Aside from that, when structuring the program, we have also had to pay attention and make sure the program is highly cohesive and loosely coupled. To keep a code highly cohesive,
+it is important to follow both SLAP, and DRY. We have to make sure the methods don't repeat themselves or have unnecessary duplicates, and finally to keep the same level of abstraction inside the code.
+This helps the code highly cohesive which contributes to making the code more understandable and easy to refactor. In terms of keeping the code loosely coupled, it is best to strictly follow SRP
+when implementing the code. Making sure the code does one thing and one thing well ensures that code is easily changeable and is immune to the side effects of having one thing change that breaks
+other parts of the program. In our experience, it was really helpful to keep as much of the code as dependent on an interface(behavior of objects) rather than the object themselves. Following this
+practice helps avoid DIP in cases where we needed to make changes to methods because our program needed a slight readjustment and our high-level modules and low-level modules would both depend on 
+abstractions(interface) less susceptible to changes.
+
+Finally, upon nearing the completion of the program, it is important to consider what pattern can be used where. Patterns such as factory method, cascade, and decorator helped
+in making a sophisticated program that solves issues regarding design principle violations. One thing we learned a lot from and consider often is what pattern will now fit the code that is written
+to both reduce and simplify the code, while also making it better. Compared to when we designed with patterns in mind, refactoring to fit the pattern is a better process that helps solidify the
+practices of software design.

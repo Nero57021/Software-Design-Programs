@@ -1,0 +1,11 @@
+x canary test
+x take in a single coordinate and return time London: 51.5074, -0.118092
+x take in a single coordinate and return time Houston: 29.7604, -95.3698
+- taken in a coordinate and timestamp then return local time
+- give a list of Location return a list of local time
+- take in an invalid entry of coordinate and return empty/error
+
+Instead of the above, let's start with these:
+x canary test
+-get_list_of_times_for_locations for an empty list of locations returns an empty list.
+-get_list_of_times_for_locations for a list with one location returns time for that location.

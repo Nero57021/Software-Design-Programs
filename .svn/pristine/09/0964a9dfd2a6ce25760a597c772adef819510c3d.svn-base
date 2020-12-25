@@ -1,0 +1,51 @@
+package game;
+
+import game.preview.Position;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.stream.Collectors.*;
+
+public interface GameOfLife {
+	
+	int THREE_LIVE_NEIGHBORS = 3;
+	int TWO_LIVE_NEIGHBORS = 2;
+	
+	enum CellState {DEAD, ALIVE}
+	
+	static CellState computeCellStatus(CellState currentStatus, int numberOfLiveNeighbors) {
+		return numberOfLiveNeighbors == THREE_LIVE_NEIGHBORS || currentStatus == CellState.ALIVE && numberOfLiveNeighbors == TWO_LIVE_NEIGHBORS
+			? CellState.ALIVE
+			: CellState.DEAD;
+	}
+	
+	static List<Position> generateSignalsForOnePosition(Position position) { //Feedback: instead of position let's call this liveCell
+		int x = position.x();
+		int y = position.y();
+		
+		List<Position> neighbors = new ArrayList<>();
+		
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				if (!(i == 0 && j == 0)) { //Feedback: (i != 0 || j != 0)
+					neighbors.add(new Position(x + i, y + j));
+				}
+			}
+		}
+		
+		return neighbors;
+	}
+	
+	static List<Position> generateSignalsForMultiplePositions(List<Position> positions) {	//Feedback:  positions to liveCells	
+		return positions.stream()
+			.flatMap(position -> generateSignalsForOnePosition(position).stream())
+			.collect(toList());
+	}
+	
+	static int countNeighbors(List<Position> positions){ //Feedback: instead of positions let's receive signals
+		return positions.stream()
+			.collect(groupingBy(o -> o, summingInt(value -> 1))) //Feedback: what does o mean?
+			.size();
+	}
+}

@@ -1,0 +1,77 @@
+package locator;
+
+import locator.preview.Location;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class IssInformationTest {
+	
+	
+	@Test
+	void canary() {
+		assert (true);
+	}
+	
+	@Test
+	void givenEmptyListOfLocationReturnEmptyList() {
+		
+		assertEquals(Map.of(), IssInformation.get_list_of_times_for_locations(List.of()));
+	}
+	
+	@Test
+	void givenListOfLocationsReturnAListOfTime() {
+		
+		assertEquals(Map.of(new Location(29.7604, -95.3698), "11:59AM"), IssInformation.
+			get_list_of_times_for_locations(List.of(new Location(29.7604, -95.3698))));
+			
+		/* //Feedback: 
+		Let's look at this test only. How can we tell that the result of the function call should be what we expect it to be? There is no context to suggest that 
+    result right?
+
+    Let's rethink about the design. The time_for_location needs to 
+    rely on an external service for the details, but we don't want to get dragged into those details right now. We can instead stub it.
+
+    setIssInformationService(...);
+    prepare a stub for the service to return "11:58PM"
+
+    assertEquals(map of location and 11:15PM, 
+      get_list_of_times_for_locations(locationsWithOneLocation);
+
+    This says that if get_list_of_times_for_locations is called with one location
+    in locations, then it will internally call the function of the service, get the time from it ("11:58PM") and return the time in a dictionary.
+		*/
+	}
+
+//Feedback: let's delete the following for now.	
+	@Test
+	void givenListOfTwoLocationsReturnAListOfTime() {
+		
+		assertEquals(
+			Map.of(
+				new Location(29.7604, -95.3698), "11:59AM",
+				new Location(30.2672, -97.7431), "11:59AM"),
+			IssInformation.get_list_of_times_for_locations(List.of(
+				new Location(29.7604, -95.3698),
+				new Location(30.2672, -97.7431))));
+	}
+	
+	@Test
+	void givenListOfTwoDupLocationsReturnAListOfTime() {
+		
+		assertEquals(
+			Map.of(
+				new Location(29.7604, -95.3698), "11:59AM",
+				new Location(30.2672, -97.7431), "11:59AM"
+			),
+			IssInformation.get_list_of_times_for_locations(List.of(
+				new Location(29.7604, -95.3698),
+				new Location(30.2672, -97.7431),
+				new Location(30.2672, -97.7431)
+			)));
+	}
+	
+}

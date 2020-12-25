@@ -1,0 +1,35 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public class Factorial {
+
+  public BigInteger factorialImperative(long number) {
+
+    if (number < 0) {
+      throw new RuntimeException("Cannot be negative number");
+    }
+
+    BigInteger product = BigInteger.ONE;
+    for (int i = 1; i <= number; i++) {
+      product = product.multiply(new BigInteger(String.valueOf(i)));
+    }
+
+    return product;
+  }
+
+  public BigInteger factorialRecursive(long number) {
+
+    if (number < 0) {
+      throw new RuntimeException("Cannot be negative number");
+    }
+
+    if (number == 0) {
+      return BigInteger.ONE;
+    }
+
+    return BigInteger.valueOf(number).multiply(factorialRecursive(number - 1));
+
+  }
+
+}

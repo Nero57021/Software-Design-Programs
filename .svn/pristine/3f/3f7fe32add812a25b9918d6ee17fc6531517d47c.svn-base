@@ -1,0 +1,38 @@
+package processor;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProcessorTest {
+
+  @Test
+  void canary() {
+    assertTrue(true);
+  }
+
+  @Test
+  void upperCaseSequenceTest() {
+    assertAll(
+      () -> assertEquals("A", Processor.upperCaseConverterBlock("A")),
+      () -> assertEquals("A", Processor.upperCaseConverterBlock("a")),
+      () -> assertEquals("1", Processor.upperCaseConverterBlock("1")),
+      () -> assertEquals("~", Processor.upperCaseConverterBlock("~")),
+      () -> assertEquals("", Processor.upperCaseConverterBlock(""))
+    );
+  }
+
+  //Feedback: the above and below do the same things for two different functions and data. Let's remove the duplication.
+
+  @Test
+  void lowerCaseSequenceTest() {
+    assertAll(
+      () -> assertEquals("a", Processor.lowerCaseConverterBlock("a")),
+      () -> assertEquals("a", Processor.lowerCaseConverterBlock("A")),
+      () -> assertEquals("1", Processor.lowerCaseConverterBlock("1")),
+      () -> assertEquals("~", Processor.lowerCaseConverterBlock("~")),
+      () -> assertEquals("", Processor.lowerCaseConverterBlock(""))
+    );
+  }
+
+}

@@ -1,0 +1,62 @@
+package locator.service;
+
+import locator.preview.Location;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+public class OpenNotifyLocationWebService implements IssInformationService {
+
+  @Override
+  public String getFlyOverTimeForLocation(Location location) {
+    try {
+      SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mma");
+      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+      String rawResponse = getRawResponse(location.lat(), location.lon());
+
+      String timestamp = parseJSON(rawResponse);
+
+      return dateFormat.format(new Date(Long.parseLong(timestamp) * 1000L));
+    } catch (Exception ex) {
+      throw new RuntimeException(ex.getClass().getSimpleName() + ": " + ex.getMessage());
+    }
+  }
+
+  String getRawResponse(double lat, double lon) throws IOException, InterruptedException {
+
+    HttpClient client = HttpClient.newHttpClient();
+    HttpRequest request = HttpRequest.newBuilder()
+      .uri(URI.create(String.format("http://api.open-notify.org/iss-pass.json?lat=%f&lon=%f&n=1", lat, lon)))
+      .build();
+    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+    if (response.statusCode() != 500) {
+      throw new RuntimeException("network error");
+    }
+    return response.body();
+
+  }
+
+  String parseJSON(String rawJSON) {
+
+    JSONObject locationJSON = new JSONObject(rawJSON);
+    String message = locationJSON.getString("message");
+
+    if (message.equals("success")) {
+      return Long.toString((
+        (JSONObject) locationJSON.getJSONArray("response").get(0))
+        .getLong("risetime"));
+    } else {
+      throw new RuntimeException(locationJSON.getString("reason"));
+    }
+  }
+
+}

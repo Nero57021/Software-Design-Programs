@@ -1,0 +1,25 @@
+package processor;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProcessorTest {
+
+  @Test
+  void canary() {
+    assertTrue(true);
+  }
+
+  @Test
+  void upperCaseSequenceTest() {
+    assertAll(
+      () -> assertEquals("a", Processor.BlockProcessor("LowerCaseBlockConverter", "A")),
+      () -> assertEquals("A", Processor.BlockProcessor("UpperCaseBlockConverter", "a")),
+      () -> assertEquals("1", Processor.BlockProcessor("", "1")),
+      () -> assertEquals("~", Processor.BlockProcessor("", "~")),
+      () -> assertEquals("", Processor.BlockProcessor("", ""))
+    );
+  }
+
+}

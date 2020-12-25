@@ -1,0 +1,14 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public interface Factorial { //Feedback: this interface provides no value. Let's merge the three
+  //functions into here in one class.
+
+  BigInteger calculate(long num);
+
+  default BigInteger factorial(long num) {
+    return calculate(num);
+  }
+
+}

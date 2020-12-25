@@ -1,0 +1,27 @@
+package processor;
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public interface Processor {
+
+  @SafeVarargs
+  static String processInput(String input, Function<String, String>... processes) { //Feedback: blocks instead of processes
+    //Feedback: Function<String, String> combinedBlocks = Stream.of(blocks)
+    // .reduce(Function.identity(), ... use andThen...);
+    //
+    // return Stream.of(input.split(""))
+    //  .map...
+    // .collect(joining(""));
+    
+    
+    return Stream.of(input.split(""))
+      .map(
+        blockChar -> Stream.of(processes)
+          .reduce(process -> process, Function::andThen)
+          .apply(blockChar))
+      .collect(Collectors.joining(""));
+  }
+
+}

@@ -1,0 +1,58 @@
+HW2 Due 11:59PM September 18
+
+In this homework we'll create an initial strategic design for the Game of Life.
+
+We'll not be writing any code in this homework, but only creating an initial design.
+
+Conway's Game of Life: <http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>.
+
+Don't worry about being right or wrong here (there is no one right
+design or solution to this problem).
+
+Don't Google for answers, it is more fun to arrive at your own solutions and 
+see how your thought process evolves in discussions with your pair and the reviews.
+
+1. How would you design this program which is a GUI application? 
+Draw a UML diagram for your design and refer to it from the text here.
+
+Description and reasoning below for classes in the diagram.
+
+Game of Life has a fairly simple ruleset and concept that allows it to be approached in multiple ways. We are planning to approach its design from a top-down perspective.
+We observe that cells have to follow the ruleset to interact with its eight neighbors and this sets whether they will live or die as it cycles. It also needs to follow the underlying
+rules of how cells can live or die depending on the four rules. One observed concern we found was making sure it accurately follow the rules. 
+Another one is tracking where the cell is inside the boundary. We also questioned whether the boundary can be breached.
+
+We made sure to separate the GUI and Logic. Logic has authority over cell and neighbor and ultimately takes signals from cell itself which calculate how many are active and the
+total amount in the game. It is also in charge of tracking the location, checking the boundary, expanding the boundary and updating total and active count as the game goes. 
+GUI makes sure the game is represented and the GUI is calling Game logic to update as it runs. GUI gets a preset dimension on start, unless otherwise stated by user from the 
+text field. Other functions of GUI is keeping a toggle to start or stop the game and updating the dimension as it checks with Game_Logic.
+
+
+Cell class is protected and it helps signal the cell's location and constantly updates whether it is alive. The one governing this is the class Game_logic itself
+and whether it is following the rules established. The method isAlive constantly updates as the game progresses and the methods inside Cell constantly checks for the rulesets
+imposed upon Cell such as over-populated, under-populated and whether it can be revived. It does this by constantly updating on how many of its neighbors are alive.
+
+2. Discuss (not just mention) what programming language you would use. 
+
+We plan to use Java for this project. We debated whether we would use C++, Python, or Java for this as these are what we had generally studied here in UH
+and ultimately came down to Java. We came to differentiate the complexity between these languages and chose one that sticks to being simple and clean. One example being C++ 
+uses the single and various legacy of classes, while Java uses a single legacy of classes. We had thought about its difference against Python also and although Python is also high level,
+supports OOP and even dynamic typing, it generally runs slower than Java. It makes Java more favorable for general speed and mostly enterprise-level application development. 
+Moreover, Java has better library support for some of its use cases against Python. This game in particular will be utilizing a GUI to represent the whole game. And while Python 
+and C++ have GUI libraries too, Java has a more robust and mature GUI library that is supported and updated regularly.
+
+Our experience with Java is more knowledgeable than the languages that are mentioned. During our internship, we were using Springboot to build a backend REST API. From the internship 
+experience, we learned about Java streams, microservices, Kafka. Using the knowledge we gained from the internship, Java will be a good option.
+
+Overall when it comes to general use and for programs that will mimic games like this, Java has a lot of advantages for giving it the edge in simplicity and structure. Its varied utility
+libraries will help reduce and reuse code for classes while maintaining simplicity in structure compared to the other two discussed.
+
+3. How do you plan to structure the program, what libraries would you use? Here we're looking for details about code directory structure, compilers, IDEs, tools, etc.---things that are at a higher level than the program and the programming language itself.
+
+We plan to use STDrawLibrary for plotting, scaling, getting, and updating location. ArrayList to keep track of the neighbors, and initializing the board with the boundary of the game. 
+Also, we will be using the Java build-in libraries such as the math library to generate random cells, Timer to keep track of the game duration and the generation.
+To display the GUI we are using the Java Swing library. A good IDE to write the code in will be IntelliJ because it provides us developers suggestions and ease of identifying
+errors, refactoring the code, and help to debug. One project management tool that we plan to use is Maven, it is used for project building, adding third-party dependencies. 
+We can specify what compile target to a JAR file. Finally, we plan to use JUnit for unit testing our code.
+
+Total [10]: 10

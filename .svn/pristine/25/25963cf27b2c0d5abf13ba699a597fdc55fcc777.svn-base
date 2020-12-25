@@ -1,0 +1,31 @@
+Assign3: Due 11:59PM November 6
+
+The Factorial of a number is the product of all numbers in the range 1 to the number.
+
+Write three implementations of a function to compute the Factorial of a number.
+
+Please start with one implementation at a time rather than rushing through all of them at the same time.
+
+The implementations are described below:
+
+1. An imperative iteration. 
+  Given a number, loop through using traditional for.
+
+2. A simple recursion.
+  
+3. A functional iteration. 
+	  Use functional internal iterators to perform the operation.
+
+Once you complete coding, please answer the following:
+
+1. What design principles did you use in this assignment? Discuss.
+
+YOUR RESPONSE GOES HERE
+
+2. What design patterns did you use? List each one of them, discuss what this pattern is, and give example(s) of where specifically you used it in this assignment.
+
+YOUR RESPONSE GOES HERE
+
+3. Any surprises or things that you did not expect?
+
+YOUR RESPONSE GOES HERE

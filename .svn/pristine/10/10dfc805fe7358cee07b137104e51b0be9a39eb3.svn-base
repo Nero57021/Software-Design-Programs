@@ -1,0 +1,32 @@
+package issLogic;
+
+
+import org.junit.jupiter.api.Test;
+import preview.Position;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class IssLogicTest {
+    
+	@Test
+	void canary(){
+	    assert(true);
+	}
+
+	@Test
+	void givenEmptyCoordinateReturnEmpty()
+	{
+
+		assertEquals("", IssLogic.getTime(List.of()));
+	}
+	@Test
+	void givenInvalidCoordinateReturnEmpty()
+	{
+		assertEquals("", IssLogic.getTime(List.of(new Position(30778778.2672, -9767868.7431))));
+	}
+
+
+}

@@ -1,0 +1,27 @@
+package locator;
+
+import locator.preview.Location;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+public interface IssInformation {
+	
+	static Map<Location, String> get_list_of_times_for_locations(List<Location> location) {
+		
+		Map<Location, String> timeOfLocation = new HashMap<>();
+		
+		if (location.isEmpty()) {
+			return Map.of();
+		}
+		
+		for (Location currentLocation : location) {
+			timeOfLocation.put(currentLocation, "11:59AM");
+		}
+		
+		return timeOfLocation;
+	}
+}
+

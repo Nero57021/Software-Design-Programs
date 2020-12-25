@@ -1,0 +1,26 @@
+package locator;
+
+import locator.preview.Location;
+import net.iakovlev.timeshape.TimeZoneEngine; //Feedback: please remove
+
+import java.text.SimpleDateFormat; //Feedback: please remove
+import java.time.ZoneId; //Feedback: please remove
+import java.util.Date; //Feedback: please remove
+import java.util.TimeZone; //Feedback: please remove
+
+public class IssLogic { //Feedback: IssInformation
+	
+	private final static long TEST_TIME_STAMP = 1601787002; //Feedback: Please remove
+	private final static long TO_SECONDS = 1000L; //Feedback: Please remove
+	private static final TimeZoneEngine timeZoneEngine = TimeZoneEngine.initialize(); //Feedback: Please remove
+	
+	public static String computeTimeFromLocation(Location location) {
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a z");
+		ZoneId zoneId = timeZoneEngine.query(location.lat(), location.lon()).get();
+		simpleDateFormat.setTimeZone(TimeZone.getTimeZone(zoneId));
+		
+		return simpleDateFormat.format(new Date(TEST_TIME_STAMP * TO_SECONDS));
+	}
+}
+

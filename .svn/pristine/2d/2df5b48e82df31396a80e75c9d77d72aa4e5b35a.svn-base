@@ -1,0 +1,36 @@
+package game.ui;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GameOfLifeGUI extends JPanel {
+	
+	public static void main(String[] args) {
+		GameOfLifeGUI game = new GameOfLifeGUI();
+		JFrame frame = new JFrame();
+		frame.setSize(600, 600);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(game);
+		frame.setResizable(false);
+		frame.setVisible(true);
+	}
+	
+	private void makeGrid(Graphics graphics, int cols, int rows, int cellSpace){
+		graphics.setColor(Color.WHITE);
+		for (int i = 0; i < rows + 1; i++) {
+			graphics.drawLine(23, 20 + i * cellSpace, 23 + cols * cellSpace, 20 + i * cellSpace);
+		}
+		
+		for (int i = 0; i < cols + 1; i++) {
+			graphics.drawLine(23 + i * cellSpace, 20, 23 + i * cellSpace, 20 + rows * cellSpace);
+		}
+	}
+	
+	@Override
+	protected void paintComponent(Graphics graphics) {
+		graphics.setColor(Color.GRAY);
+		graphics.fillRect(0, 0, getWidth(), getHeight());
+		makeGrid(graphics, 10, 10, 50);
+	}
+}

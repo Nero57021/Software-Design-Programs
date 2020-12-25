@@ -1,0 +1,155 @@
+[Reviewed 10/14/20 08:59 AM MDT]
+synopsis:  previous feedback notes still in code
+
+details: 
+
+Feedback from previous review are still in code. Please address, remove those feedback notes from code, and then drop an email for the review to continue.
+
+------------------------------------------------------------------------------
+[Reviewed 10/13/20 12:23 PM MDT]
+synopsis:  previous feedback notes still in code
+
+details: 
+
+Feedback from previous review are still in code. Please address, remove those feedback notes from code, and then drop an email for the review to continue.
+
+
+------------------------------------------------------------------------------
+[Reviewed 10/13/20 11:17 AM MDT]
+synopsis:  how to run the program?
+
+details: 
+
+> ./gradlew run
+
+> Task :run FAILED
+Error: Could not find or load main class issLocator.IssLogic
+Caused by: java.lang.ClassNotFoundException: issLocator.IssLogic
+
+FAILURE:...
+
+------------------------------------------------------------------------------
+[Reviewed 10/12/20 10:55 AM MDT]
+synopsis:  good work so far
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 10/11/20 08:25 AM MDT]
+synopsis:  good work so far
+
+details: 
+
+Good work so far.
+
+Let's proceed to complete the tests.
+
+------------------------------------------------------------------------------
+[Reviewed 10/10/20 06:31 AM MDT]
+synopsis:  good work so far
+
+details: 
+
+Good work so far.
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 10/09/20 15:31 PM MDT]
+synopsis:  a few things to fix
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 10/09/20 06:00 AM MDT]
+synopsis:  we should have clarity of interface over implementation. Keep an eye on SRP
+
+details: 
+
+Please see suggestions in code.
+
+Please drop an email for a quick review after these changes.
+
+------------------------------------------------------------------------------
+[Reviewed 10/08/20 08:45 AM MDT]
+synopsis:  good so far
+
+details: 
+
+Good so far. Let's move forward.
+
+------------------------------------------------------------------------------
+[Reviewed 10/07/20 12:53 PM MDT]
+synopsis:  let's fix a few things
+
+details: 
+
+Please see suggestions in code. Let's not add any new feature, let's clean this up 
+and get it ready for another review during the next review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 10/06/20 12:57 PM MDT]
+synopsis:  good so far
+
+details: 
+
+Good so far. Let's refactor.
+
+Then let's move forward.
+
+------------------------------------------------------------------------------
+[Reviewed 10/05/20 13:19 PM MDT]
+synopsis:  let's rethink the design
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 10/04/20 07:07 AM MDT]
+synopsis:  let's change direction
+
+details: 
+
+From the previous review to this one, you have changed direction significantly. You were heading in the right direction before, but this new direction does not look like a good one. Let's change.
+
+Let's change direction. We're getting dragged into processing time without first getting into the context of the application.
+
+Let's step back and think about the design.
+
+We take a list of lat and lon, it does not matter where the list comes from.
+For each location (lat, lon) we want to get the time for the flyover. We don't 
+have to worry right now about how to get that information, it can come from 
+anywhere, that does not matter. Given a list of locations, we want to get a 
+list of times. Let's call this function get_list_of_times_for_locations.
+
+-get_list_of_times_for_locations for an empty list of locations returns an empty list.
+-get_list_of_times_for_locations for a list with one location returns time for that location.
+
+We are not interested right now to go out and get the actual time. 
+get_list_of_times_for_locations can call another function that can eventually 
+do the work. Let's keep our focus only on get_list_of_times_for_locations. How 
+can we design get_list_of_times_for_locations so that it can use another 
+function that will do the actual work of taking one location and returning the 
+time?
+
+------------------------------------------------------------------------------
+[Reviewed 10/03/20 11:56 AM MDT]
+synopsis:  very nice start
+
+details: 
+
+Very nice start. Good job so far.
+
+------------------------------------------------------------------------------
+[Reviewed 10/03/20 06:54 AM MDT]
+synopsis: red in coverage, let's try this again
+
+details:
+Please make sure to run coverage and make sure there is no red in the coverage report. If there is red (or yellow) please fix it or ask for help to fix it. Once the coverage report shows 100%, all green, please drop an email to ask for review.
+
+------------------------------------------------------------------------------

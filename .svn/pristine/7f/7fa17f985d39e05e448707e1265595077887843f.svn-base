@@ -1,0 +1,7 @@
+package game.ui;
+
+public class GameOfLifeGUI {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}

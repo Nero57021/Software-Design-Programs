@@ -1,0 +1,95 @@
+Please keep all files related to a homework or an assignment within the appropriate directory. Files checked in outside of specific homework or assignment directory will not be reviewed or graded for that homework/assignment.
+
+Check in and modify files as many times as you like. You will not be able to modify the files after the deadline.
+
+You will work as a pair, both of you are responsible for the completed work in all assignments and homework. Reasonable effort is expected from each person. If you do not check in, you will not receive any scores. When pairing please switch who checks in so there is significant number of check in from each of you.
+
+The deadlines are strict, there will be no extensions. Don't email any code to Venkat or to the mailing list. Your last check in before the deadline will be graded. If your last check in breaks the code, both you and your pair will lose significant points.
+
+Please feel free to ask for frequent reviews. See the reviews/readme.txt file for details on how to ask for reviews.
+
+You can evolve the answers and solutions based on the reviews. Only the latest checkin at the time of review will be looked at. Also the final check in will be the only one graded.
+
+You are still responsible to successfully complete an homework or assignment even if your pair is a no-show. You can request to change pairs at any time and if there is another person in the class willing to pair with you we can make the switch.
+
+A lot of help will be provided in this course, but you have to start early and ask for help along the way.                                                                      
+
+Please read the academic honesty policy posted on the course mailing list.                   
+
+The above details apply to all homework and assignments in this course.                   
+
+Now to homework #1.
+==============================================================================
+HW1: Due 11:59PM September 11
+
+1. According to the article <http://martinfowler.com/articles/designDead.html>
+Is design really dead? Explain.
+
+Fowler's article begins by introducing two differing style of design - evolutionary and planned design. Evolutionary and planned design are both
+commonly used in the industry, but their structure and concepts diverge in the approach to building a system.
+
+Evolutionary design is a concept where the design grows as the system is implemented. It is best suited for a dynamic environment where programmers add the minimum
+amount of code to satisfy the business needs in an iterative and incremental approach. However it has a fallacy where if the code is bad, it aggregates and
+creates an issue where it becomes hard to change or maintain altogether. Factoring in software entropy and this design style becomes troublesome
+making bugs more costly to fix as the project persists.
+
+The other style mentioned is planned design where its a project wide approach to the system. Planned design differs because it isn’t being coded while 
+being designed.It specifically focuses first on making a thorough and structured design before being handed off to be coded. While it sounds good, it also has an
+issue where its a style of design with future changes in mind. However it falls short because its impossible to think of all the issues that will occur. And its 
+major issue is what happens when the design requirement is not understood well enough or when it changes requirements post design. These are some of the
+issues that plagues planned design and make it vulnerable to fallacy.
+
+The two design style mentioned certainly have major differences when it comes to approach. Evolutionary design enumerates on designing as it is implemented,
+while planned design has a top down approach that makes a blueprint of the whole system with flexibility to change before being built.
+Overall, design isn’t dead, the numerous issues that persist in these design styles are what makes it problematic. 
+By concept, it still works, however the approaches to it needs to change and adapt to a new modernized style.
+
+
+2. According to the article how should we approach design?
+
+Now knowing that designing a system is complicated, Fowler introduces approaches we should consider in order to keep the design simple,
+while preventing the problems that occurs in the two design styles.
+
+In XP there are two slogans, "Do the Simplest Thing that Could Possibly Work" and "You Aren't Going to Need It" (YAGNI). And the underlying assumption for XP
+being that it is possible to flatten the change curve to make evolutionary design work. However, a coupling issue occurs because theres no way to flatten the curve without
+using practices that goes against it. One important approach that Fowler emphasized is continuous testing and integration because it improves development effort.
+And one small approach to keep in mind is constantly refactoring with a disciplined manner that ensures its effective.
+
+Moving on, Fowler introduces and explains patterns. Its the backbone and vital for design, however it is overused. Simply, there are too many useless patterns
+that are implemented, but never removed. For XP, he emphasize about learning patterns and understanding its proper application. In short, have a discipline when it
+comes to implementing patterns, quality over quantity of patterns.
+
+Finally, he emphasized the approach of simplicity in design. Focus on eliminating duplication, adhering to XP's "Once and Only Once" and pragmatic programmer's -
+"Don't Repeat Yourself" discipline. That alone eliminates a lot, but not the whole thing. Following the guideline that it is best to be simpler than it needs to be,
+but being a little complex isn't a disaster altogether.
+
+3. What are some of the techniques that Martin Fowler recommends that we 
+should follow?
+
+
+Fowler recommends that certain techniques be followed to ensure that design stays clean and structured.These techniques aren’t by any means a 
+strict rule to adhere to, but good techniques to develop and follow so that design remains organized and understandable.
+
+Designing for reversibility ensures that any process that creates an error can easily be traced. Reversibility would be a crucuial technique for
+evolutionary design as it will prevent bad code from aggregating and causing issues. Another one is to ensure constant refactoring 
+so that anyone can make improvements whenever needed, but also adhering to YAGNI. This is also in conjunction with practicing refactoring skills to ensure that internal 
+structure is improved, while preserving external behavior. Another practice mentioned is ensuring that proper UML diagrams are created with the goal to communicate it. 
+Making sure to make it short, does not have to be too detailed, and to treat it as a sketch - to draw them for clarity, but not treat them as artifacts. 
+
+For extreme programming, Fowler advices on learning and recognizing patterns. Not only in the concept of recognizing them, but applying them properly
+and knowing when to apply them. This is in conjunction that applied patterns should be in its simplest form first and grow in complexity later. Finally also knowing
+when to pull out a pattern is crucial, many programmers implement a pattern but decide against taking it out when its not useful.
+
+Finally its both a technique and a mindset to have the will to design. Its a human aspect as Fowler describes that is easy to leave out in technical practices
+in the industry. Design style like evolutionary design relies on a driving force that ensures the quality of design remains high. It does not need the whole team,
+but usually one or two people in a team needs to undertake the responsibility to apply this technique in order to take action before a problem gets uncontrollable.
+This is a deterrent to a persistent issue when it comes to evolutionary design where if an individual exercises this technique consistently, then the issue
+of aggregating bad code that leads to poor design will never occur.
+
+Total[10]: 8
+
+2.
+A few parts need to be reworked as they are superfluous.
+
+
+Spellcheck -1

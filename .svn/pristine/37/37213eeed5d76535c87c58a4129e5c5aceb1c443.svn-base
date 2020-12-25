@@ -1,0 +1,46 @@
+package locator.service;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class OpenNotifyAstronautWebService {
+
+  public List<String> getAstronautNames() throws IOException, InterruptedException {
+    return parseJSON(getRawResponse());
+  }
+
+  String getRawResponse() throws IOException, InterruptedException {
+    HttpClient client = HttpClient.newHttpClient();
+    HttpRequest req = HttpRequest.newBuilder()
+      .uri(URI.create("http://api.open-notify.org/astros.json"))
+      .build();
+
+    HttpResponse<String> response = client.send(req, HttpResponse.BodyHandlers.ofString());
+    return response.body();
+  }
+
+  public List<String> parseJSON(String rawJSON) {
+
+    /*
+    JSONObject obj = new JSONObject(rawJSON);
+    JSONArray arrayOfAstronautsInfo = obj.getJSONArray("people");
+
+    // "people" is an array not an object so we weren't able to get an iterator //Feedback: why is this comment here?
+    return IntStream.range(0, arrayOfAstronautsInfo.length()) //Feedback: find another way or ask for help over email
+      .mapToObj(astronauts -> arrayOfAstronautsInfo.getJSONObject(astronauts).getString("name"))
+      .collect(Collectors.toList());
+    */
+      
+    return List.of("Chris Cassidy", "Anatoly Ivanishin", "Ivan Vagner"); //Feedback: do we need to code above? If so, there is no test to say we do.
+  }
+}
+

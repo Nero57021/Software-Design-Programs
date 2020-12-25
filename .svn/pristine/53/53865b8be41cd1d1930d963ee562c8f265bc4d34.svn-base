@@ -1,0 +1,20 @@
+x canary test
+x convert "A" to "A"
+x convert "a" to "A"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+x convert "a" to "a"
+x convert "A" to "a"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+x convert "aa" to "a"
+x convert "AA" to "A"
+x convert "11" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+//Feedback: let's mark tests x when completed.

@@ -1,0 +1,66 @@
+package game.ui;
+
+import game.GameOfLife;
+import game.preview.Position;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
+
+public class GameOfLifeGUI extends JPanel {
+	//Feedback: private on the next line
+	List<Position> generationSignals; //Feedback: liveCells?
+	
+	private GameOfLifeGUI(List<Position> signals) {
+		generationSignals = signals;
+		
+		Timer timerForASeconds = new Timer(1000, e -> { //Feedback: We should not start timers in constructors,
+		  //this is quite dangerous in programming. Instead, move the timer code to the init function that is called automatically when a frame is created.
+			repaint();
+			generationSignals = GameOfLife.nextGeneration(generationSignals);
+		});
+		
+		timerForASeconds.start();
+	}
+	
+	public static void main(String[] args) {
+		
+		List<Position> verticalBlinker = List.of( //Feedback: this should come in as argument so we can change the initial scenaraio easily to start a new game
+			new Position(5, 9),
+			new Position(5, 8),
+			new Position(5, 7));
+		
+		GameOfLifeGUI game = new GameOfLifeGUI(verticalBlinker);
+		JFrame frame = new JFrame();
+		frame.setSize(600, 600);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(game);
+		frame.setResizable(false);
+		frame.setVisible(true);
+	}
+	
+	private void makeGrid(Graphics graphics, int cols, int rows, int cellSpace) {
+		graphics.setColor(Color.WHITE);
+		for (int i = 0; i < rows + 1; i++) {
+			graphics.drawLine(0, i * cellSpace,  cols * cellSpace, i * cellSpace);
+		}
+		
+		for (int i = 0; i < cols + 1; i++) {
+			graphics.drawLine( i * cellSpace, 0, i * cellSpace, rows * cellSpace);
+		}
+	}
+	
+	@Override
+	protected void paintComponent(Graphics graphics) {
+		graphics.setColor(Color.GRAY);
+		graphics.fillRect(0, 0, getWidth(), getHeight());
+		
+		List<Position> bounds = GameOfLife.getBounds(generationSignals);
+		
+		System.out.println(bounds);
+		makeGrid(graphics, 10, 10, 50);
+	}
+	
+}

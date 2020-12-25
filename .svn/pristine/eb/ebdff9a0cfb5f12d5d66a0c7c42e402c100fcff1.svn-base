@@ -1,0 +1,13 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public class FactorialRecursive implements  Factorial{
+  public BigInteger calculate(long number) {
+    if (number == 0) {
+      return BigInteger.ONE;
+    }
+
+    return BigInteger.valueOf(number).multiply(factorial(number - 1));
+  }
+}

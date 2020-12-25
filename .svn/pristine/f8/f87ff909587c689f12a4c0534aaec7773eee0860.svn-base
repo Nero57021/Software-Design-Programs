@@ -1,0 +1,102 @@
+[Reviewed 10/20/20 09:07 AM MDT]
+synopsis:  You're done
+
+details: 
+
+yay
+
+------------------------------------------------------------------------------
+[Reviewed 10/19/20 04:23 AM MDT]
+synopsis:  let's revisit a few parts
+
+details: 
+
+
+1.
+
+Good so far.
+
+Clarity, Opacity, Testability, Reusability, ...
+
+2.
+
+Good so far.
+
+Time and economic impact?
+
+3.
+
+Good so far.
+
+Paring?
+
+Code reviews?
+
+4.
+
+<https://dzone.com/articles/the-single-level-of-abstraction-principle> SLAP?
+
+
+------------------------------------------------------------------------------
+[Reviewed 10/18/20 09:30 AM CDT]
+synopsis:  good work so far, let's continue
+
+details: 
+
+1.
+
+Very good points so far. There are a lot more, let's continue, in short paragraphs.
+
+2.
+
+"A significant disadvantage of long methods is that it is rigid, fragile, immobile, needlessly complex, and opaque." These are design concerns and can be moved to previous part.
+
+"fallacy of being hard to change and requiring a cascade of changes" Is this a fallacy?
+
+Very good points so far. There are a lot more, let's continue, in short paragraphs.
+
+3.
+
+What will "you" do to help "other" programmers write short methods?
+
+4.
+
+Can we not help deal with coupling by using interfaces in statically typed languages? Also, can't we reduce coupling by reducing the number of things we may depend on, by way or modularizing?
+
+<https://dzone.com/articles/the-single-level-of-abstraction-principle> SLAP?
+
+5.
+
+Good details.
+
+------------------------------------------------------------------------------
+[Reviewed 10/17/20 07:27 AM CDT]
+synopsis:  good work so far
+
+details: 
+
+Good work so far.
+
+1.
+
+Please write in short paragraphs for each part. This will help us to bring in more details with better focus on each detail.
+
+2.
+
+Please write in short paragraphs for each part. This will help us to bring in more details with better focus on each detail.
+
+3.
+
+Let's keep separate ideas into separate paragraphs. Let's write as what, hows, and the benefits in each paragraph, to give more focus to each idea.
+
+4.
+
+How do we know we are following SRP, what can tell us about that?
+
+5.
+
+Let's compare that tool with what we used. Should we use that tool instead? If so why and if not, why not?
+
+What other tools have we used?
+
+------------------------------------------------------------------------------

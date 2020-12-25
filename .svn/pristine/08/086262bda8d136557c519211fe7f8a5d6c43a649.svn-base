@@ -1,0 +1,3 @@
+package locator.preview; //Feedback: isslogic.preview
+
+public record Location(double lat, double lon) {} //Feedback: Location instead of Position

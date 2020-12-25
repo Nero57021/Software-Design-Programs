@@ -1,0 +1,8 @@
+- given a string of character with only a-z and lower cased sequence, upperCaseConverterBlock return uppercase string
+- given a string of character with only a-z and upper cased sequence, upperCaseConverterBlock return uppercase string
+- given a string of character with only a-z and mix case sequence, upperCaseConverterBlock return uppercase string
+- given a string of character with only numbers sequence, upperCaseConverterBlock return uppercase string
+- given a string of character with only numbers and a-z lower case sequence, upperCaseConverterBlock return uppercase string
+- given a string of character with only numbers and a-z uppercase sequence, upperCaseConverterBlock return uppercase string
+- given a string of character with only numbers and a-z mix case sequence, upperCaseConverterBlock return uppercase string
+- given a empty string, upperCaseConverterBlock return empty string

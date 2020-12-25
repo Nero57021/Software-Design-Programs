@@ -1,0 +1,6 @@
+package factorial;
+
+public interface Factorial {
+
+    public long computeFactorial(long num);
+}

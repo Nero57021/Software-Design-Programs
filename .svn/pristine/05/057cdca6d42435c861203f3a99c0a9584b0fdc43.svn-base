@@ -1,0 +1,66 @@
+package locator.service;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.regex.Pattern;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+
+public class OpenNotifyAstronautWebServiceTest {
+
+  final String VALID_RESPONSE = """
+      {
+        "number": 3,
+        "people": [
+          {
+          "craft": "ISS",
+          "name": "Chris Cassidy"
+        },
+        {
+          "craft": "ISS",
+          "name": "Anatoly Ivanishin"
+        },
+        {
+          "craft": "ISS",
+          "name": "Ivan Vagner"
+        }
+        ],
+        "message": "success"
+      }
+    """;
+  public OpenNotifyAstronautWebService astronautWebService;
+
+  @BeforeEach
+  void init() {
+    astronautWebService = new OpenNotifyAstronautWebService();
+  }
+
+  @Test
+  void getRawResponseReturnJSON() throws IOException, InterruptedException {
+
+    String response = astronautWebService.getRawResponse();
+    Pattern pattern = Pattern.compile("number|people|craft|name");
+    assertTrue(pattern.matcher(response).find());
+  }
+
+  @Test
+  void parseJSONAndGetAstronautNames() {
+
+    assertEquals(List.of("Chris Cassidy", "Anatoly Ivanishin", "Ivan Vagner"), astronautWebService.parseJSON(VALID_RESPONSE));
+  }
+
+  @Test
+  void getAstronautNamesReturnsListOfNames() throws IOException, InterruptedException {
+
+    astronautWebService = spy(OpenNotifyAstronautWebService.class);
+    doReturn(VALID_RESPONSE).when(astronautWebService).getRawResponse();
+
+    assertEquals(List.of("Chris Cassidy", "Anatoly Ivanishin", "Ivan Vagner"), astronautWebService.getAstronautNames());
+  }
+}

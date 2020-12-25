@@ -1,0 +1,13 @@
+x canary test
+x get_list_of_times_for_locations for an empty list of locations returns an empty list.
+x get_list_of_times_for_locations for a list with one location returns time for that location.
+x get_list_of_times_for_locations for a list with two location returns time for those location.
+x get_list_of_times_for_locations for a list with three location and one duplicate returns time for only two location.
+
+-get_list_of_times_for_locations for a list with two locations returns time for two locations.
+
+-get_list_of_times_for_locations for a list with three locations returns time for three locations.
+
+-get_list_of_times_for_locations for a list with three location returns time for two locations and an error message when the request for the second location fails with an "invalid location" exception.
+
+-get_list_of_times_for_locations for a list with three location returns time for two locations and an error message when the request for the third location fails with a "network error" exception.

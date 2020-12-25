@@ -1,0 +1,29 @@
+package locator;
+
+import locator.service.OpenNotifyAstronautWebService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class OpenNotifyAstronautWebServiceTest {
+
+  public OpenNotifyAstronautWebService astronautWebService;
+
+  @BeforeEach
+  void init() {
+    astronautWebService = new OpenNotifyAstronautWebService();
+  }
+
+  @Test
+  void getRawResponseReturnJSON() {
+    //Feedback: no assertAll. One call to getRawResponse
+    assertAll(
+      () -> assertTrue(astronautWebService.getRawResponse().contains("number")),
+      () -> assertTrue(astronautWebService.getRawResponse().contains("people")),
+      () -> assertTrue(astronautWebService.getRawResponse().contains("craft")),
+      () -> assertTrue(astronautWebService.getRawResponse().contains("name"))
+    );
+  }
+}

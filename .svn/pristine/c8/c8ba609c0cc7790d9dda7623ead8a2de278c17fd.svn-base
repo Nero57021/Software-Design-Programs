@@ -1,0 +1,123 @@
+[Reviewed 11/15/20 09:18 AM CST]~
+synopsis: let's proceed to processor
+
+details: 
+
+Let's proceed to processor.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 11/14/20 19:42 PM CST]
+synopsis: let's keep it DRY
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 11/14/20 09:35 AM CST]~
+synopsis: let's honor OCP
+
+details: 
+
+Please see suggestions in code.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 11/13/20 10:54 AM MST]~
+synopsis: let's rework the design
+
+details: 
+
+Please see suggestions in code.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 11/13/20 05:20 AM MST]~
+synopsis: let's reduce the multiplier and rework the blocker
+
+details: 
+
+Please see suggestions in code.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 11/12/20 07:27 AM MST]
+synopsis: good so far
+
+details: 
+
+Good so far.
+
+Please proceed to the other functions/blocks.
+
+------------------------------------------------------------------------------
+[Reviewed 11/11/20 14:12 PM MST]
+synopsis: let's merge common stuff into a base
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 11/11/20 12:16 PM MST]~
+synopsis: red in coverage, let's try this again
+
+details:
+Please make sure to run coverage and make sure there is no red in the coverage report. If there is red (or yellow) please fix it or ask for help to fix it. Once the coverage report shows 100%, we can move forward with the reviews.
+
+------------------------------------------------------------------------------
+[Reviewed 11/11/20 06:42 AM MST]~
+synopsis: let's rework the tests
+
+details: 
+
+Please see suggestions in code.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 11/08/20 14:06 PM MST]
+synopsis: lets' remove the duplication
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 11/08/20 06:10 AM MST]~
+synopsis: too much code
+
+details: 
+
+Please see the previous review, "proceed to the next function." At this time we should have a total of two functions, one for uppercase and one for lowercase.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 11/07/20 08:33 AM MST]
+synopsis: good so far
+
+details: 
+
+Good so far.
+
+Let's proceed to the next function.
+
+------------------------------------------------------------------------------
+[Reviewed 11/07/20 06:10 AM MST]~
+synopsis: one small step at a time
+
+details: 
+
+Rather than two functions, let's focus on one function to start.
+
+Let's write the tests mentioned in tests.txt.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------

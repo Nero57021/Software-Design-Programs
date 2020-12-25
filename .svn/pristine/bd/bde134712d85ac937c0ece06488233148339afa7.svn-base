@@ -1,0 +1,18 @@
+package processor;
+
+public interface Processor {
+
+  static String BlockProcessor(String process, String input) {
+
+    if (process.equals("LowerCaseBlockConverter")) {
+      return input.toLowerCase();
+    } else if (process.equals("UpperCaseBlockConverter")) {
+      return input.toUpperCase();
+    }
+
+  else
+    {
+      return input;
+    }
+  }
+}

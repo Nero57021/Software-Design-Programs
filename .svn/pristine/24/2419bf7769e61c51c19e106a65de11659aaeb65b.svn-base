@@ -1,0 +1,59 @@
+Assign3: Due 11:59PM November 6
+
+The Factorial of a number is the product of all numbers in the range 1 to the number.
+
+Write three implementations of a function to compute the Factorial of a number.
+
+Please start with one implementation at a time rather than rushing through all of them at the same time.
+
+The implementations are described below:
+
+1. An imperative iteration. 
+  Given a number, loop through using traditional for.
+
+2. A simple recursion.
+  
+3. A functional iteration. 
+	  Use functional internal iterators to perform the operation.
+
+Once you complete coding, please answer the following:
+
+1. What design principles did you use in this assignment? Discuss.
+
+The program covered designing code while sticking to SOLID design principles.In this assignment we primarily
+encountered design problems concerning SRP, DRY and SLAP. Where we had several encounteres of violating these principles.
+
+We violated DRY during unit testing by rewriting the test for each method and repeating it. SRP was violated when we tried two
+methods at once, or when we made asserts that would attempt multiple things instead of being singularly focused.
+For SLAP we had to focus on it when we are trying to converge all the methods into once class, instead of spreading it out to other
+classes.
+
+Overall the program helped taught us about the importance of these principles and how easy it is to violate them in an attempt to find a solution to
+our design issue.
+
+2. What design patterns did you use? List each one of them, discuss what this pattern is, and give example(s) of where specifically you used it in this assignment.
+
+This assignment allowed us to experiment with multiple design patterns while building the program.
+
+One of the patterns we use was abstract factory where we provided an interface without specifying their concrete class. This was done with the interface factorial
+and the three classes that focused on different methodology of factorial implementing it.
+
+We also have tried factory method and this was primarily implemented while writing unit test. Where the interface(factorialTest) had the tests which called on its 
+subclasses that invoke the three different methods of factorial in our program. This was a nice way to test multiple methods without having to rewrite 
+the tests for each which followed the DRY principle.
+
+Finally inside our methods, we used the method chaining or "train wreck" pattern to simplify and reduce the code inside our factorial methods. This not only helped
+the code look better, but it also prevented us from needing to store the data or having a variable hold it which prevents other issues from popping up.
+
+3. Any surprises or things that you did not expect?
+
+Throughout the process of building the program we encountered problems or obstacles that we typically did not expect.
+One of it was the issue of converging the methods of factorial into one. Per our usual approach and experience, we had made an interface and 3
+that implements it. The issue then comes in reducing the redundancy and bundling it into one. This was particularly difficult because
+we were trying to implement and redesign our program far differently than we are normally used to.
+
+Another one was the bigInteger problem. When given an int that was quite large, we had to research and find what data type could hold that many digit.
+And suprisingly bigInteger exist to cover that. We haven't encountered such a large number before, usually all numbers fall less than n^32, but that one
+test made us take on a number that goes as far as n^100.
+
+

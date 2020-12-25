@@ -1,0 +1,57 @@
+package factorial;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class ImperativeFactorialTest {
+
+  private ImperativeFactorial factorial;
+
+  @BeforeEach
+  void setUp(){
+    factorial = new ImperativeFactorial();
+  }  
+
+  @Test
+  void canary(){
+    assert(true);
+  }
+
+  @Test
+  void givenFactorialZeroReturnOne(){
+    assertEquals(1, factorial.computeFactorial(0));
+  }
+
+  @Test
+  void givenFactorialOneReturnOne(){
+    assertEquals(1, factorial.computeFactorial(1));
+  }
+
+  @Test
+  void givenFactorialTwoReturnTwo(){
+    assertEquals(2, factorial.computeFactorial(2));
+  }
+
+  @Test
+  void givenFactorialThreeReturnSix(){
+    assertEquals(6, factorial.computeFactorial(3));
+  }
+
+  @Test
+  void givenFactorialFourReturn24(){
+    assertEquals(24, factorial.computeFactorial(4));
+  }
+
+  @Test
+  void givenFactorialFiveReturn120(){
+    assertEquals(120, factorial.computeFactorial(5));
+  }
+
+  @Test
+  void givenNegativeNumberThrowsException(){
+    assertThrows(RuntimeException.class, () -> factorial.computeFactorial(-1));
+  }
+}

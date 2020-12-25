@@ -1,0 +1,84 @@
+package game;
+
+import game.preview.Position;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+import static java.util.stream.Collectors.*;
+
+public interface GameOfLife {
+	
+	final int THREE_LIVE_NEIGHBORS = 3;
+	final int TWO_LIVE_NEIGHBORS = 2;
+	
+	enum CellState {DEAD, ALIVE}
+	
+	static CellState computeCellStatus(CellState currentStatus, int numberOfLiveNeighbors) {
+		return numberOfLiveNeighbors == THREE_LIVE_NEIGHBORS || currentStatus == CellState.ALIVE && numberOfLiveNeighbors == TWO_LIVE_NEIGHBORS
+			? CellState.ALIVE
+			: CellState.DEAD;
+	}
+	
+	static List<Position> generateSignalsForOnePosition(Position liveCell) {
+		
+		int x = liveCell.x();
+		int y = liveCell.y();
+		
+		List<Position> neighbors = new ArrayList<>();
+		
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				if ((i != 0 || j != 0)) {
+					neighbors.add(new Position(x + i, y + j));
+				}
+			}
+		}
+		
+		return neighbors;
+	}
+	
+	static List<Position> generateSignalsForMultiplePositions(List<Position> liveCells) {
+		
+		return liveCells.stream()
+			.flatMap(position -> generateSignalsForOnePosition(position).stream())
+			.collect(toList());
+	}
+	
+	static Map<Position, Integer> countSignals(List<Position> signals) {
+		
+		return signals.stream()
+			.collect(groupingBy(Function.identity(), summingInt(signal -> 1)));
+	}
+	
+	static List<Position> nextGeneration(List<Position> positions) {
+		
+		return countSignals(generateSignalsForMultiplePositions(positions))
+			.entrySet()
+			.stream()
+			.filter(positionAndCount ->
+				CellState.ALIVE == computeCellStatus(positions.contains(positionAndCount.getKey()) ? CellState.ALIVE : CellState.DEAD,
+					positionAndCount.getValue()))
+			.map(Map.Entry::getKey)
+			.collect(toList());
+	}
+	
+	static List<Position> getBounds(List<Position> points) {
+		
+		if (points.isEmpty()) {
+			return List.of();
+		}
+		
+		int minX = points.stream().min(Comparator.comparing(Position::x)).get().x();
+		int minY = points.stream().min(Comparator.comparing(Position::y)).get().y();
+		
+		int maxX = points.stream().max(Comparator.comparing(Position::x)).get().x();
+		int maxY = points.stream().max(Comparator.comparing(Position::y)).get().y();
+		
+		return List.of(new Position(minX, minY), new Position(maxX, maxY));
+	}
+	
+}

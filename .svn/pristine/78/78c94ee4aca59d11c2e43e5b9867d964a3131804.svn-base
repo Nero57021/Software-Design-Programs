@@ -1,0 +1,135 @@
+[Reviewed 11/02/20 12:33 PM MST]
+synopsis: let's revisit 2
+
+details: 
+
+1.
+
+Good
+
+2.
+
+Second paragraph, can we mention the names in code so we can see this pattern being used in the solution.
+
+3.
+
+Good
+
+------------------------------------------------------------------------------
+[Reviewed 11/01/20 04:01 AM MST]
+synopsis: let's bring in details to principles
+
+details: 
+
+Please spellcheck.
+
+1.
+
+"design principles.In this" space after .
+
+"SRP, DRY and SLAP" to "SRP, DRY, and SLAP"
+
+"Where we had several encounteres of violating these principles." This sentence is incomplete.
+
+Let's write in short paragraphs where we discuss each principle in separate paragraphs. Relate to details in code.
+
+2.
+
+"One of the patterns we use was abstract factory where we provided an interface without specifying their concrete class. This was done with the interface factorial
+and the three classes that focused on different methodology of factorial implementing it."  Let's not leave this abrupt, tell us more, what happened?
+
+"Where the interface(factorialTest) had the" had and then what happend to it?
+
+"method chaining or "train wreck" pattern "  Neither one of those is the name for this pattern, what is it?
+
+"...our factorial methods. " Did we use it in all the mthods?
+
+3.
+
+" and 3 that implements it" 3 what?
+
+"the bigInteger " BigInteger?
+
+------------------------------------------------------------------------------
+[Reviewed 10/31/20 05:15 AM MDT]
+synopsis: good so far
+
+details: 
+
+Good so far. Please see suggestions in code.
+
+Please proceed to work on assign3.txt.
+
+------------------------------------------------------------------------------
+[Reviewed 10/30/20 09:21 AM MDT]
+synopsis: good work so far
+
+details: 
+
+Good work so far. Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 10/29/20 05:33 AM MDT]
+synopsis: good work so far
+
+details: 
+
+Good work so far.
+
+Let's remove the unnecessary interface.
+
+Please drop an email for a quick review after these changes. Please modify the requestReview.txt file also.
+
+------------------------------------------------------------------------------
+[Reviewed 10/28/20 06:25 AM MDT]
+synopsis: let's refactor
+
+details: 
+
+Please see suggestions in code.
+
+Please drop an email for a quick review after these changes. Please modify the requestReview.txt file also.
+
+------------------------------------------------------------------------------
+[Reviewed 10/27/20 08:01 AM MDT]
+synopsis: good work so far
+
+details: 
+
+Good work so far.
+
+We can merge the factorial functions into one class:
+factorialImperative
+factorialRecursive
+
+Interface for Factorial to be implemented by two classes has no value.
+
+------------------------------------------------------------------------------
+[Reviewed 10/26/20 05:46 AM MDT]
+synopsis: let's keep it DRY
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 10/24/20 13:24 PM MDT]
+synopsis: one more test and then the next step
+
+details: 
+
+Please see tests.txt.
+
+Then, let's get started with the next function.
+
+------------------------------------------------------------------------------
+[Reviewed 10/24/20 05:45 AM MDT]
+synopsis: YAGNI
+
+details: 
+
+Do not bring in abstractions until there is a clear need for it. Postpone design decisions until you can't avoid them.
+
+Please drop an email for a quick review after these changes. Please modify the requestReview.txt file also.
+
+------------------------------------------------------------------------------

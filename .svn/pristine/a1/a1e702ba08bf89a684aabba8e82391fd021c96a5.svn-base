@@ -1,0 +1,24 @@
+package processor;
+
+import java.util.stream.Collectors;
+
+public interface Processor {
+
+  static String upperCaseConverterBlock(String input) {return input.toUpperCase();}
+
+  static String lowerCaseConverterBlock(String input) {
+    return input.toLowerCase();
+  }
+
+  static String multiplierBlock(String input) {return input.chars().mapToObj(val -> Character.toString(val).repeat(2)).collect(Collectors.joining());}
+
+  static String BlockerBlock(String input) {
+    return switch (input) {
+      case "z" -> input.replace("z", "");
+      case "Z" -> input.replace("Z", "");
+      case "k" -> input.replace("k", "");
+      default -> input;
+    };
+  }
+
+}

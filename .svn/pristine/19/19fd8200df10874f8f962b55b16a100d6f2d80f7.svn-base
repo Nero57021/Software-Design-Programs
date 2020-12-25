@@ -1,0 +1,19 @@
+package factorial;
+
+public class ImperativeFactorial implements Factorial {
+
+    @Override
+    public long computeFactorial(long num) {
+
+        if(num < 0){
+            throw new RuntimeException("Cannot be negative number");
+        }
+        long res = 1;
+        for ( int i = 1; i <= num; i++ ) {
+            res *= i;
+        }
+        return res;
+    }
+
+    
+}

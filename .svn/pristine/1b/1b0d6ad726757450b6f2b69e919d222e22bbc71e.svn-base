@@ -1,0 +1,44 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.IssInformationService;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class IssInformationTest {
+
+    public static IssInformation issInformation;
+
+    @BeforeAll
+    static void init() {
+        issInformation = new IssInformation();
+    }
+
+    @Test
+    void canary() {
+        assert (true);
+    }
+
+    @Test
+    void givenEmptyListOfLocationReturnEmptyList() {
+
+        assertEquals(Map.of(), issInformation.get_list_of_times_for_locations(List.of()));
+    }
+    
+    @Test
+    void givenListOfLocationsReturnAListOfTime() {
+
+        IssInformationService issInformationServiceMock = (lat, lon) -> "11:58PM"; //Feedback: nice work here, good job. Not sure if this can be used more, but nice to see here.
+
+        issInformation.setIssInformationService(issInformationServiceMock);
+
+        assertEquals(Map.of(new Location(29.7604, -95.3698), "11:58PM"),
+				issInformation.get_list_of_times_for_locations(List.of(new Location(29.7604, -95.3698)))); //Feedback: please indent properly, I was staring at this as to why there is a non assert after assert.
+
+    }
+}

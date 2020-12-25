@@ -1,0 +1,20 @@
+x canary test
+x factorialImperative given a zero as a number, return 1.
+x factorialImperative given one return 1.
+x factorialImperative given two return 2.
+x factorialImperative given three return 6.
+x factorialImperative given four return 24.
+x factorialImperative given five return 120.
+x factorialImperative given ten return 3628800
+x factorialImperative given 50 returns
+x factorialImperative given a negative number, throw an exception.
+
+x factorialRecursive given a zero as a number, return 1.
+x factorialRecursive given one return 1.
+x factorialRecursive given two return 2.
+x factorialRecursive given three return 6.
+x factorialRecursive given four return 24.
+x factorialRecursive given five return 120.
+x factorialRecursive given ten return 3628800
+x factorialRecursive given 50 returns
+x factorialRecursive given a negative number, throw an exception.

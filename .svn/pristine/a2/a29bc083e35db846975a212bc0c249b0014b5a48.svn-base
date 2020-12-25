@@ -1,0 +1,10 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public class FactorialFunctional extends FactorialTest {
+  @Override
+  BigInteger factorialCases(long number) {
+    return Factorial.functionalFactorial(number);
+  }
+}

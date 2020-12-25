@@ -1,0 +1,19 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public class Factorial {
+
+  public BigInteger factorialImperative(long number) { //Feedback: should this be a static method since it does not use any state?
+
+    return new FactorialImperative().factorial(number); //Feedback: how does this benefit us? Should we not have the code righ here instead of calling into a needless class
+
+  }
+
+  public BigInteger factorialRecursive(long number) {
+
+    return new FactorialRecursive().factorial(number); //Feedback: how does this benefit us? Should we not have the code righ here instead of calling into a needless class
+
+  }
+
+}

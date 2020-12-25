@@ -1,0 +1,32 @@
+package processor;
+
+import java.util.stream.Collectors;
+
+public interface Processor {
+
+  static String upperCaseConverterBlock(String input) {return input.toUpperCase();}
+
+  static String lowerCaseConverterBlock(String input) {
+    return input.toLowerCase();
+  }
+
+  static String multiplierBlock(String input) {return input.chars().mapToObj(val -> Character.toString(val).repeat(2)).collect(Collectors.joining());}
+
+  //Feedback: we need a specialized blocker for each character.
+  static String BlockerBlock(String input) {
+    return switch (input) { //Feedback: this violates OCP. If we need to block another character, we will have to change this code.
+      case "z" -> input.replace("z", "");
+      case "Z" -> input.replace("Z", "");
+      case "k" -> input.replace("k", "");
+      default -> input;
+    };
+  }
+
+  //Feedback: 
+  /*
+    ... Function<String, String> createBlocker(... characterToBlock) {
+      ... create and return a Function that takes character as parameter.
+          In that function, replace characterToBlock with "" on the given character
+    }
+  */
+}

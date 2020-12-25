@@ -1,0 +1,11 @@
+package issLocator;
+
+import preview.Position;
+import java.util.List;
+import java.util.Map;
+
+public interface IssLogic {
+	static Map<Position, String> getTime(List<Position> coordinate) {
+    return Map.of();
+  }
+}

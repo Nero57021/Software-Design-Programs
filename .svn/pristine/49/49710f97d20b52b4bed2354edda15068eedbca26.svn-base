@@ -1,0 +1,85 @@
+HW3 Due Monday October 23rd 11:59PM
+
+Please respond only in this file.
+
+1. How does writing long methods affect code and design quality?
+
+Writing long methods with poor quality leads to poor responsiveness.
+Long methods have a tendency to become disorganized, and it affects design because the code becomes rigid, fragile, immobile, opaque. These problems will affect
+the overall design quality because of the issues it causes and eventually the code would need to be scrapped because it would be too costly to maintain such
+a poorly designed code.
+
+A regular problem of methods is that it has a tendency to be needlessly complex. Being overly complex, makes it hard to change and would require more change than it should need.
+The code being hard to change makes it break easily and often too, a side effect also being that it will be hard to reuse due to high coupling. Even with the programmer's 
+intent on making a good code, this ruins the overall design quality because of the consequences of poor practice.
+
+Overall, writing non-modular methods lead to poor design and quality of code. In the pursuit of trying to make the code a jack of all trades - overgeneralize by having it
+as extensible as possible, it instead results into poor quality and design.
+
+2. What are the main disadvantages and consequences of writing long methods?
+
+Most long methods tend to lack separation of concern. The design concern that programmers should adhere to are disregarded and indicates a problem in the code.
+Long methods are a classical code smell, it is not in itself a problem, but it's an indication that there is a problem in there.
+
+One of the problems that becomes clear fast it long methods are effectively impossible to unit test. To elaborate, you can't write a meaningful test on the long methods, that will test
+its full purpose, or if you do, it does not fully cover everything that it does. It would either fail to test the overall purpose of the method, or fail to cover the code.
+
+Another glaring problems that long methods have is readability. A short and simple 25 or so lines of code that calls on other functions to accomplish its task is certainly easier
+to understand than a 350 - 500 line code which becomes cryptic very quickly. This has a consequence of being both hard to read for programmers who haven't worked on it
+and it's even harder to explain / outline what the specific method is supposed to be doing.
+
+Finally, long methods have issues when dealing with its structure and refactoring. It is often a sign that if a code is long, there is a structure lacking in code. This happens because
+programmers could not distinguish the commonalities (the feature / attribute its sharing) between the different part of the method. Where this leads is a refactoring issue because if 
+you could not find the difference that can be separated among them, refactoring the code altogether becomes an problem and serves as a patch that only inflates the problem.
+
+3. What are some of the steps you can take to help programmers write shorter methods? 
+
+As a programmer I would advice on paying close attention the design concerns, practices of good code quality and being able to keep code purposeful, simple and narrow.
+
+Paramount to having good code, is having good understanding of design practices. One of the crucial initiative to this is paying attention to perils of bad design.
+To put it simply, I would advice on making sure the code does not fall into the issues of rigidity, fragility, immobility and opacity. These may seem simple and easy to understand,
+but they are design practices that are hard to follow for beginners simply because its easier to disregard these design concerns when starting.
+
+Another issue that other programmers face is that they do not want to revise their code. Often times this is a matter of viscocity and how programmers would take the easier way out, rather
+than doing it right. I advice on rewriting, and refactoring code, even if its done because there would always be a way to simplify and make the code better than its previous
+iteration. This is a difficult concept to grasp as no programmer wants to erase their work and start over and over, but it is needed in order to learn to properly start in the
+right path rather than the wrongful one.
+
+Finally, there is the peril of needless complexity and repetition in programmers. I would advice on keeping the code narrow and simple, as I have fallen into this dilema also when I
+first started. Oftentimes, I fall into the wrong mindset of wanting my code to be able to handle and do everything. Although I code with good intention, it oftentimes becomes harmful
+to the code itself because it turns for the worse in being hard to understand and complex. A reason this happens is because programmers want to reuse or copy code with seemingly
+multiple functionality in hopes of making their code seem better. This is horribly wrong as the whole code itself becomes bloated and its original singular purpose becomes lost
+in the giant web of "extensability" within the code.
+
+4. How do you know if a method is really short?
+
+A good way of knowing whether the code is short and as minimal as it should be is to follow the Single responsibility principle.
+The SRP states that code should be focused, narrow and do one thing and only one thing very well.
+
+To follow SRP, programmers practicing writing cohesive code needs to check if their code is narrow, and focused. Oftentimes a dead giveaway is the code smell of either long methods
+or needless repetition within the code. Oftentimes, following SRP along with DRY helps with narrowing down what is needed in the code. In previous projects, we have encountered this
+issue where if code seemingly smells, its often because we have breached one of the two principles and it briefly reminds us of the YAGNI principle where we are trying to implement
+a function that is not yet needed at that point of the project.
+
+An example of this concerns the previous assignment where we are trying to implement a way to get time from coordinate already without first making stubs to ensure it will work like
+we designed it too. We also violated both the SRP by making functions reliant on each other without proper testing and DRY by having part of the code repeat itself later concerning when
+we were trying to parse the Json.
+
+Overall, this experience has pointed out the issues we had in both implementation of code and design, while also helping us practice in recognizing if the code is as minimal as it should
+be without the fluff and unnecessary bloat that would later cause issues.
+
+5. Have we used any tools to keep an eye on quality and complexity of code? Discuss your experience with such tools.
+
+On a past project - not this class, we used Sonarqube, and it recommends/suggests things to improve and fix code quality when the code is pushed into the CI workflow. This helps
+minimalize and also notify programmers about possible useless chunks of code that are being used. It helps practice good quality by keeping code simple and minimal while also ensuring 
+code complexity is minimal enough to avoid opacity.
+
+A tool that we used during our projects for this class is Jacoco, and that tool helps ensure that our code is at the highest coverage possible. What's important about this tool and
+its reports, is that by showing us our in-depth coverage, we can see whether we have fully tested our code. And not only on the means of writing test for coverage, but writing
+meaningful test that covers a particular function very well on what it should be doing.
+
+In terms of benefits, we think Sonarqube is the better tool because it includes everything Jacoco has plus feedback on bugs, code quality and code smells. To elaborate,
+it measures reliability, security, maintainability, coverage and duplications. This can help us keep an eye on the quality and complexity of the code as we build it.
+However, Sonarqube is a bit too advanced for programmers who are not familiar with such tools. Therefore Jacoco is the better tool for introducing this practice of
+keeping an eye on code coverage and quality of the code as its implemented. For more complex projects, SonarQube provides more data on the code, while Jacoco is better for
+projects that are short and not as complicated.

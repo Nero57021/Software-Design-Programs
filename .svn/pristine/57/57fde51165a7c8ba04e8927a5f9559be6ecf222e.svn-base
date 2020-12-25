@@ -1,0 +1,52 @@
+Assign1: Due 11:59PM October 2
+
+***Your chance of success greatly increases if you start very early. Your chance of failure increases if you start late.
+
+Using Test First Development (no code without test first) implement the problem you designed in hw2. Feel free to evolve that design and use your judgment to make changes based on the improved understanding and learning. You are not required, nor expected, to use all or any part of the design you created in hw2.
+
+Take small steps, ask for frequent reviews.
+
+First start with a tests list (check in a tests.txt file) and a canary test. Implement at most two other tests, in addition to the canary test, and minimum code to make those tests to pass. This is a great first step to complete and ask for a review.
+
+After completing the assignment (and only after) answer the following questions:
+
+1. What did you learn mainly in this assignment?
+
+For this assignment, we learned extensively about the concept of test driven development. It is something completely different from how we normally approach to making our programs. The
+usual norm of approach for beginners / junior programmers is that we write and construct a whole system of functions and write test after, which is terrible - now that we're reflecting on 
+it.
+
+This assignment also changed the way we thought of writing our test, normally we write tests to fit our functions, but this new approach had us writing functions that would fit the test 
+we wrote. It saves us both time and potential problems where each function is known and tested for what it's supposed to do. This benefits us greatly during development where we can 
+reliably create functions that rely on previously tested function without the worry of the previous function working as it should. Additionally, it prevents the headache of data handling
+between classes that can't be passed or weird shortcuts to circumvent that. This made the program more compact, simple, and concise on what it should be.
+
+Aside from this, we also got to learn about the feature called records for Java. It's a great concept for writing a class that takes arguments/parameters that you would need, without
+needing to implement the whole library that is otherwise unnecessary.  We applied what we learned by implementing records Position that acts almost similar to the point class from the 
+AWT library.
+
+2. How is your current design different, if at all, from the strategic design created in hw2?
+
+Our design versus that of homework 2 is worlds apart in both concept and construction. HW2 we focused on making separate classes that have functions that would each fulfill the roles
+and associated rules it is assigned. These classes would work together to then generate the result we were looking for. A problem we had in thinking this through is how would we accurately
+test each one, and also what if one function is dependent on another function to work - ie count neighbor from cell has to know first if the cell is dead or not from logic class.
+
+Reflecting on our current design now, the Test-driven approach certainly saved a whole series of problems that would have been encountered on. The current design is compact and all
+the logic, game functions, and rulings are under one class where it's fully tested and the code coverage for it is as high as it can go. Were also able to change and amend any mistakes
+inside functions easier since the functions are clear and concise. 
+
+3. Were there any surprises or things you did not expect along the way? Any 
+particular problem faced, things you had to tackle that you did not expect 
+beforehand?
+
+A problem we initially encountered was when the suggestion of not using the awt library. We had to find a workaround to the obstacle for that as we became reliant on the class Point
+from the awt library. Stumbling upon the records feature was a nice lesson in learning something new from java. Now instead of implementing a whole library, we can use records
+to duplicate a class from that particular library without having to unnecessarily implement all of it.
+
+Another set of problems that we had to learn was the way we conducted tests. We would write tests that should fit the function we wrote. In approach and ideology its wrong because there 
+are factors such as relevance to the program, or if it fits the design. It was both a habit we had to get rid of and forcing ourselves to think anew which is very hard considering we 
+practiced the wrong approach for years.
+
+Finally, our last problem was configuring how to enable preview features to run. During our testing of GameOfLifeGUI, we encountered the problem of constantly having to enable preview, 
+and ultimately it locking us. We solved this by configuring JVM options which were something that we never touched before and would not have learned about if we were not using experimental
+features from java 14 at first.

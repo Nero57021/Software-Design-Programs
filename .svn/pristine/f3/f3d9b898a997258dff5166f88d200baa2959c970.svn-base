@@ -1,0 +1,18 @@
+package factorial;
+
+public class Factorial {
+
+  public long factorialImperative(long number) {
+
+    if (number < 0) {
+      throw new RuntimeException("Cannot be negative number");
+    }
+
+    long product = 1;
+    for (int i = 1; i <= number; i++) {
+      product *= i;
+    }
+
+    return product;
+  }
+}

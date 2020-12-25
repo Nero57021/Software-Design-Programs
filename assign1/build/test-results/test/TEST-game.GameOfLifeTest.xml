@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="game.GameOfLifeTest" tests="29" skipped="0" failures="0" errors="0" timestamp="2020-11-29T04:02:20" hostname="LAPTOP-JEREMY" time="0.079">
+  <properties/>
+  <testcase name="horizontalBlinkerReturnsVerticalBlinker()" classname="game.GameOfLifeTest" time="0.04"/>
+  <testcase name="getNeighborsForGivenPoint2_4Returns8Neighbors()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="beeHiveGenerationsReturnsSameBeehive()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="gliderWithLiveCellOnTopReturnCellMovingRight()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="countSignalForOnePositionReturnAMapWithOneKey()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="forGivenThreeListOfPointsReturns24Signals()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="getNeighborsForPosition3_3()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="getNeighborsForPosition4_4()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="getNeighborsForPosition5_5()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="getNeighborsForGivenPoint0_0Returns8Neighbors()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="behaviorOfALiveCell()" classname="game.GameOfLifeTest" time="0.005"/>
+  <testcase name="getNeighborsForGivenPoint3_3Returns8Neighbors()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="givenFourPointReturnWithBothPointInSpecifiedOrder()" classname="game.GameOfLifeTest" time="0.003"/>
+  <testcase name="count2DuplicateSignal_and_1_Non_Duplicate()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="getNeighborsForGivenPoint2_3Returns8Neighbors()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="verticalBlinkerReturnsHorizontalBlinker()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="getBoundsEmptyListReturnsEmptyList()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="getListOfSamePositionAppearingTwice()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="givenThreePointReturnWithBothPointInSpecifiedOrder()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="forGivenEmptyListOfPointsReturns0Signals()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="countNeighborsGivenAnEmptyListReturns_0()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="givenTwoPointReturnWithBothPointInSpecifiedOrder()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="blockGenerationsReturnsSameBlock()" classname="game.GameOfLifeTest" time="0.0"/>
+  <testcase name="forGivenOneListOfPointsReturns8Signals()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="getNeighborsForPositionBorder0_0()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="Canary()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="behaviorOfADeadCell()" classname="game.GameOfLifeTest" time="0.002"/>
+  <testcase name="count1SignalGivenDuplicateCoordinate()" classname="game.GameOfLifeTest" time="0.001"/>
+  <testcase name="forGivenTwoListOfPointsReturns16Signals()" classname="game.GameOfLifeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

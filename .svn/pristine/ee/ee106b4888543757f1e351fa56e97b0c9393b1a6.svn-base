@@ -1,0 +1,11 @@
+package issLogic;
+
+import org.junit.jupiter.api.Test;
+
+public class IssLogicTest {
+    
+	@Test
+	void canary(){
+	    assert(true);
+	}
+}

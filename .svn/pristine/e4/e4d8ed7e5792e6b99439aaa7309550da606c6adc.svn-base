@@ -1,0 +1,59 @@
+package game;
+
+import game.preview.Position;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.*;
+
+public interface GameOfLife {
+	
+	int THREE_LIVE_NEIGHBORS = 3; //Feedback: final
+	int TWO_LIVE_NEIGHBORS = 2; //Feedback: final
+	
+	enum CellState {DEAD, ALIVE}
+	
+	static CellState computeCellStatus(CellState currentStatus, int numberOfLiveNeighbors) {
+		return numberOfLiveNeighbors == THREE_LIVE_NEIGHBORS || currentStatus == CellState.ALIVE && numberOfLiveNeighbors == TWO_LIVE_NEIGHBORS
+			? CellState.ALIVE
+			: CellState.DEAD;
+	}
+	
+	static List<Position> generateSignalsForOnePosition(Position liveCell) {
+		int x = liveCell.x();
+		int y = liveCell.y();
+		
+		List<Position> neighbors = new ArrayList<>();
+		
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				if ((i != 0 || j != 0)) {
+					neighbors.add(new Position(x + i, y + j));
+				}
+			}
+		}
+		
+		return neighbors;
+	}
+	
+	static List<Position> generateSignalsForMultiplePositions(List<Position> liveCells) {
+		return liveCells.stream()
+			.flatMap(position -> generateSignalsForOnePosition(position).stream())
+			.collect(toList());
+	}
+	
+	static Map<Position, Integer> countSignals(List<Position> signals) {
+		return signals.stream()
+			.collect(groupingBy(signal -> signal, summingInt(value -> 1)));
+	}
+	
+	// TODO: Implement nextGeneration //Feedback: please remove such lines. When tests roll in, code can come in
+	static List<Position> nextGeneration(List<Position> positions) {
+		
+		return Collections.emptyList();
+	}
+	
+}

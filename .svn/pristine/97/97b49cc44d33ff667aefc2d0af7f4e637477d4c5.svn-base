@@ -1,0 +1,31 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.IssInformationService;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+import static java.util.stream.Collectors.toMap;
+
+public class IssInformation {
+
+  private IssInformationService informationService;
+
+  public void setIssInformationService(IssInformationService service) {
+    informationService = service;
+  }
+
+
+  public Map<Location, String> getListOfTimesForLocations(List<Location> locations) {
+
+    if (locations.isEmpty()) {
+      return Map.of();
+    }
+    return locations.stream()
+      .collect(toMap(Function.identity(),
+        location -> informationService.setIssInformationService(location))
+      );
+  }
+}

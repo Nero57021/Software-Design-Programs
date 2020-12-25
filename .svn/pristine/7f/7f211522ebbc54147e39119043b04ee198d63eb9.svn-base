@@ -1,0 +1,36 @@
+x canary test
+
+LowerCaseTest
+x convert "A" to "a"
+x convert "a" to "a"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+UpperCasetest
+x convert "a" to "A"
+x convert "A" to "A"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+MultiplierTest
+x convert "a" to "aa"
+x convert "A" to "AA"
+x convert "1" to "11"
+x convert "~" to "~~"
+x convert "" to ""
+
+zblockertest
+x convert "z" to ""
+x convert "aZ" to "aZ"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+UpperZblockertest
+x convert "Z" to ""
+x convert "az" to "az"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""

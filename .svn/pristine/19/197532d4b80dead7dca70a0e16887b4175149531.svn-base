@@ -1,0 +1,16 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public class FactorialImperative implements Factorial {
+  @Override
+  public BigInteger factorial(long number) {
+    BigInteger product = BigInteger.ONE;
+
+    for (int i = 1; i <= number; i++) {
+      product = product.multiply(new BigInteger(String.valueOf(i)));
+    }
+
+    return product;
+  }
+}

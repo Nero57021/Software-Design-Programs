@@ -1,0 +1,21 @@
+package factorial;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class FactorialRecursiveTest extends FactorialTest {
+
+  @Test
+  void canary() {
+    assertTrue(true);
+  }
+
+  @Override
+  Factorial factorialTest() {
+
+    return new FactorialRecursive();
+
+  }
+
+}

@@ -1,0 +1,4 @@
+package preview;
+
+public record Postion(double lat, double lon) {
+}

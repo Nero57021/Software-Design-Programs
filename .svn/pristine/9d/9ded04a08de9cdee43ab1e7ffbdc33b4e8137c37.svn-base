@@ -1,0 +1,15 @@
+x canary test
+
+uppercase:
+x convert "A" to "A"
+x convert "a" to "A"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+lowercase:
+x convert "A" to "a"
+x convert "a" to "a"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""

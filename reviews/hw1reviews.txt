@@ -1,0 +1,73 @@
+[Reviewed 09/10/20 04:48 AM MDT]
+synopsis:  let's remove duplication and also write in full sentences
+
+details: 
+
+Please do not remove the top part of the hw1.txt file that provides details that are common to all homework and assignments. I put it back in there now.
+
+1.
+The first paragraph is saying the same thing with only a little detail added in each sentence. We can remove that duplication and reduce that paragraph to a single sentence. Then we can add a bit more to the first paragraph about the two approaches, his major observations, before moving on to the next paragraph about one of them.
+
+Good writing in the second paragraph and the third.
+
+"we see different ways design styles differ and" redundant wording, let's rephrase the sentence.
+
+Once we write a sentence we should reread it, after a couple of minutes, stepping away, so we can see if it flows well and concisely conveys the intent.
+
+2.
+
+"...make the design simple, less refactoring the code"
+please rephrase, as written this sentence does not make sense. The word less does not fit into this sentence to convey anything meaningful.
+
+The first paragraph needs rework. It has quite a bit of duplication, says same things over, has incomplete sentences, and also repeats things from part 1 instead of moving forward.
+
+"Keeping the design simple, less refactoring, and patterns." This is not a complete sentence. Each sentence should convey one single full idea.
+
+
+" Need It"(YAGNI). "
+to
+" Need It" (YAGNI). "
+
+
+"Patterns are important in designing. Most times patterns are often overused."
+to
+"Patterns are important in designing, but often patterns are overused."
+
+
+"are,learn about"
+to
+"are, learn about"
+
+3.
+
+"and structured.These techniques"
+to
+"and structured. These techniques"
+
+Good points here but there are a few more things the author emphasizes that should be brought in to this part.
+
+Please reread each part and look for duplication or repetitive sentences.
+
+------------------------------------------------------------------------------
+[Reviewed 09/09/20 02:46 AM MDT]
+synopsis:  let's write in short paragraphs
+
+details: 
+
+Please avoid bullets.
+
+Please write in short paragraphs, with a good flow and short narratives.
+
+"You can answer here and check in the file (your answer does not have to
+be complete to check in - check in frequently)." Please remove this once you answer a part.
+
+1.
+In this part bring details about the two approaches that the author talks about and contrast. Please write in short paragraphs here - introductory, one approach, the second approach, finally a concluding paragraphs that leads to part 2.
+
+2.
+Here again, please write in short paragraphs, focusing on the approach that the author recommends. Once we discuss that approach in the first paragraph we can, in short paragraph discuss various techniques within that approach.
+
+3.
+Here again, please write in short paragraphs about specific recommendations.
+
+------------------------------------------------------------------------------

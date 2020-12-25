@@ -1,0 +1,21 @@
+package processor;
+
+import java.util.function.Function;
+
+public interface BlockProcessor {
+  static String upperCaseConverterBlock(String input) {
+    return input.toUpperCase();
+  }
+
+  static String lowerCaseConverterBlock(String input) {
+    return input.toLowerCase();
+  }
+
+  static String multiplierBlock(String input) {
+    return input.repeat(2);
+  }
+
+  static Function<String, String> createBlocker(String characterToBlock) {
+    return input -> input.replace(characterToBlock, "");
+  }
+}

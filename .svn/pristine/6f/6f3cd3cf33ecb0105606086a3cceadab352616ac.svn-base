@@ -1,0 +1,44 @@
+package processor;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProcessorTest {
+
+  @Test
+  void canary() {
+    assertTrue(true);
+  }
+
+  @Test
+  void upperCaseSequenceTest() {
+    assertAll(
+      () -> assertEquals("A", Processor.upperCaseConverterBlock("A")),
+      () -> assertEquals("A", Processor.upperCaseConverterBlock("a")),
+      () -> assertEquals("1", Processor.upperCaseConverterBlock("1")),
+      () -> assertEquals("~", Processor.upperCaseConverterBlock("~")),
+      () -> assertEquals("", Processor.upperCaseConverterBlock(""))
+    );
+  }
+  @Test
+  void lowerCaseSequenceTest() {
+    assertAll(
+      () -> assertEquals("a", Processor.lowerCaseConverterBlock("a")),
+      () -> assertEquals("a", Processor.lowerCaseConverterBlock("A")),
+      () -> assertEquals("1", Processor.lowerCaseConverterBlock("1")),
+      () -> assertEquals("~", Processor.lowerCaseConverterBlock("~")),
+      () -> assertEquals("", Processor.lowerCaseConverterBlock(""))
+    );
+  }
+  @Test
+  void multiplyCaseSequenceTest() {
+    assertAll(
+      () -> assertEquals("aa", Processor.multiplierConverterBlock("a")),
+      () -> assertEquals("AA", Processor.multiplierConverterBlock("A")),
+      () -> assertEquals("11", Processor.multiplierConverterBlock("1")),
+      () -> assertEquals("~~", Processor.multiplierConverterBlock("~")),
+      () -> assertEquals("", Processor.multiplierConverterBlock(""))
+    );
+  }
+}

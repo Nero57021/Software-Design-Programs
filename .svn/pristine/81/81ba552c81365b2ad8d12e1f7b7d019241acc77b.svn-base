@@ -1,0 +1,10 @@
+x canary test
+x given a zero as a number, return 1.
+x given one return 1.
+x given two return 2.
+x given three return 6.
+x given four return 24.
+x given five return 120.
+x given a negative number, throw an exception.
+
+- test for 10

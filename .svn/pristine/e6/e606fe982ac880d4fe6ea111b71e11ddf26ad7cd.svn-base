@@ -1,0 +1,11 @@
+x canary test
+
+x convert "A" to "a"
+x convert "a" to "A"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+
+
+//Feedback: let's list the tests here for each block/function.

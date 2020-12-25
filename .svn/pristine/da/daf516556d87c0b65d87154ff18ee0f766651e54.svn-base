@@ -1,0 +1,23 @@
+//package processor;
+//
+//import org.junit.jupiter.params.provider.Arguments;
+//
+//import java.util.stream.Stream;
+//
+//public class UpperCaseZBlockerTest implements ProcessorTest{
+//
+//  private static Stream<Arguments> testSamples() {
+//
+//    return Stream.of(
+//      Arguments.of("aZ", "a"),
+//      Arguments.of("AZ", "A"),
+//      Arguments.of("1Z", "1"),
+//      Arguments.of("~Z", "~"),
+//      Arguments.of("Z", "")
+//    );
+//  }
+//
+//  @Override
+//  public String processor(String input) {return Processor.upperCaseZBlockerBlock(input);}
+//
+//}

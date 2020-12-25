@@ -1,0 +1,7 @@
+-canary test
+-convert "A" to "A"
+-convert "1" to "1"
+-convert "~" to "~"
+-convert "" to ""
+
+//Feedback: let's mark tests x when completed.

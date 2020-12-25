@@ -1,0 +1,51 @@
+package ui;
+
+import processor.BlockProcessor;
+
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Processor {
+
+  public static void main(String[] args) {
+
+    String block = "11abcdabcdabcdzzaazzabcd";
+
+    Scanner myObj = new Scanner(System.in);
+    System.out.println("1. Use predefined block. \n2. Create a block");
+
+    String userChoice = myObj.next();
+
+   if(userChoice.equals("2")){
+      System.out.println("Enter your block: ");
+      block = myObj.next();
+    }
+
+//    try {
+//
+//      FileReader fr = new FileReader(args.length > 0 ? args[0] : "processor.txt");
+//      Scanner scanner = new Scanner(fr);
+//
+//      while (scanner.hasNextLine()) {
+//        String processorBlock = scanner.next();
+//        System.out.println(processorBlock);
+//        block = switch (processorBlock) {
+//          case "UpperCaseConverter" -> BlockProcessor.upperCaseConverterBlock(block);
+//          case "LowerCaseConverter" -> BlockProcessor.lowerCaseConverterBlock(block);
+//          case "Multiplier" -> BlockProcessor.multiplierBlock(block);
+//          case "z-blocker" -> BlockProcessor.createBlocker(block).apply("z");
+//          case "Z-blocker" -> BlockProcessor.createBlocker(block).apply("Z");
+//          case "k-blocker" -> BlockProcessor.createBlocker(block).apply("k");
+//          default -> block;
+//        };
+//      }
+//
+//      System.out.println(block);
+//
+//
+//
+//    } catch (Exception ex) {
+//      System.out.println("Service unavailable");
+//    }
+  }
+}

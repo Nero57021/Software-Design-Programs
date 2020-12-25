@@ -1,0 +1,5 @@
+package locator.service;
+
+public interface IssInformationService {
+    String setIssInformationService(double lat, double lon); //Feedback: Location instead of two doubles
+}

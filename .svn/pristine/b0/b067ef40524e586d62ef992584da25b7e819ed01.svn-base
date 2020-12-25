@@ -1,0 +1,46 @@
+HW4 Due 11:59PM December 4th
+
+***There will be no reviews for this Homework***
+
+Feel free to give answers collectively, and also if you want to, you can call 
+out something specific to yourself different from your team member.
+
+1. What did you essentially learn in this course about design?
+
+Jeremy:
+
+Coming to this course I learned the most about test driven design and the SOLID principle. To add to this, I also learned more about Java 8 and java 11.
+Specifically for java 8, I learned a lot about records which help utilize functionality similar to a library. In our case, we were using the AWT library
+to find pointers for assignment 1. using records we were able to recreate the functionality of the awt library, without having to specifically call the entire library.
+
+For java 11, I learned a lot about Functions, where Functions allowed us to avoid rewriting the same code over and over again. Specifically with the blockers.
+This helped us learn about ways to follow DRY and keep code simple. It is both a convenient technique to know and use when it comes to making a simple, and clean code
+that is loosely coupled.
+
+When it comes to principles, we learned a lot from DRY. It is a simple principle, but surprisingly, we found it quite surprising how many times we repeat code. This along with SLAP
+principle was both a core fundamental we had a hard time adjusting to. We find that when designing its easy to get carried away and slip up on the abstraction of code and also
+ignore the numerous duplicate code that is written. This is especially prevalent during testing, as its easy to duplicate and write redudant copies of code to
+get good coverage of code.
+
+One of the most important thing we learned was adhering to the style of test driven design. Coming from classes and previous experience about writing code to test, and not writing
+test that will specify the objective of the code is one of the core mistake we had coming to this course. It was hard to unlearn and proved to be quite a difficult feat because
+we had become used to writing and creating programs without any design principles to follow beforehand.
+                                
+Please provide individual responses to this question here (state your name and write in short paragraphs below that).
+
+Replace this with your response.
+
+2. What are some of the general guidelines you would follow when designing?
+
+From the course, we have learned a lot about principles of design as well as fallacies that are very easy to fall into.
+
+When designing, it would be good to adhere to mostly to YAGNI in the beginning. Too many times, did we violate YAGNI because we thought we could go ahead move on with our
+current progress. But we ended up needing to take anothe look at code coverage and refactor a whole lot. It is a principle that helps prevent us from stumbling into issues later,
+but also a principle that teaches programmers not to rush.
+
+While YAGNI is useful in the beginning, towards the middle course of designing the program, it would be good to refactor many times and check if the code is violating
+the SLAP and DRY principle. It is an easy fallacy to fall into while designing and proves to be quite difficult to fix once the issue gets out of hand. By making sure
+these two principles are satisfied, then other issues will become less of a threat and would be easier to find a solution for.
+
+
+Replace this with your response. Provide one collective response as a team.

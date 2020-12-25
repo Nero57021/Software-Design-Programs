@@ -1,0 +1,40 @@
+[Reviewed 11/08/20 14:06 PM MST]
+synopsis: lets' remove the duplication
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 11/08/20 06:10 AM MST]~
+synopsis: too much code
+
+details: 
+
+Please see the previous review, "proceed to the next function." At this time we should have a total of two functions, one for uppercase and one for lowercase.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------
+[Reviewed 11/07/20 08:33 AM MST]
+synopsis: good so far
+
+details: 
+
+Good so far.
+
+Let's proceed to the next function.
+
+------------------------------------------------------------------------------
+[Reviewed 11/07/20 06:10 AM MST]~
+synopsis: one small step at a time
+
+details: 
+
+Rather than two functions, let's focus on one function to start.
+
+Let's write the tests mentioned in tests.txt.
+
+Let's do a quick review after these changes. Please modify the requestReview.txt file and check it in as soon as you are ready and I will do a review well before the next scheduled review cycle.
+
+------------------------------------------------------------------------------

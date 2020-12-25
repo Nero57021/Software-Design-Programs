@@ -1,0 +1,11 @@
+package issLogic;
+
+import java.util.List;
+
+public class IssLogic {
+
+  public static String getTime(List<Object> coordinate) {
+
+    return "";
+  }
+}

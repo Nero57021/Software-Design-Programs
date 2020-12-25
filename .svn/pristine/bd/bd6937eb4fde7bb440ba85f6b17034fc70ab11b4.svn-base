@@ -1,0 +1,40 @@
+HW3 Due Monday October 23rd 11:59PM
+
+Please respond only in this file.
+
+1. How does writing long methods affect code and design quality?
+
+Writing long methods with poor quality leads to poor responsiveness. Long methods tend to become disorganized, it leads to
+poor readability (opacity) and depending on its purpose, it can often times be hard to use(immobility). Writing non-modular methods lead to poor design and quality of code.
+
+
+2. What are the main disadvantages and consequences of writing long methods?
+
+Long methods become complex and rigid if it isn't kept to a minimum through practices of refactoring.
+It affect quality by making it needlessly complex, where something that should have been simple, straightforward and concise is then turned into
+a mess. 
+
+3. What are some of the steps you can take to help programmers write shorter methods? 
+
+Steps to take that would help programmers write shorter methods is to pay attention to perils of bad design. One such is maintaining the practice of viscocity where its easier
+for programmers to do the wrong things, and harder to implement the right practice. Another one would be to avoid making good needlessly complex which is because many programmers
+tend to want their code to be overly generalized which leads to the pitfall of complexity.
+
+Additionally, the principles of keeping the code from falling into rigidity, fragility and immobility would help programmers avoid these problems alotogether and prevent them from
+writing methods that are longer than it should be. 
+
+4. How do you know if a method is really short?
+
+We would know if a method is short if its cohesive and minimally coupled. To elaborate, a code that is narrow, focused and does one thing well would be cohesive. If its
+minimal and narrowed, then it would never be needlessly complex which would indicate that it is the minimum length it should be for its desired purpose.
+
+All in all, its really the practice of SRP where where if a code is direct, short and do one thing and one thing very well, then it has achieved what its main purpose should be.
+
+5. Have we used any tools to keep an eye on quality and complexity of code? Discuss your experience with such tools.
+
+On a past project - not this class, we used sonarqube, and it recommends / suggest things to improve and fix code quality when the code is pushed into the CI workflow. This helps
+minimalize and also notify programmers about possible useless chunks of code that are being used. It helps practice good quality by keeping code simple and minimal while also
+ensuring code complexity is minimal enough to avoid opacity.
+
+
+

@@ -1,0 +1,5 @@
+package issLogic;
+
+public interface IssLogic {
+
+}

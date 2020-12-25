@@ -1,0 +1,24 @@
+package factorial;
+
+import org.junit.jupiter.api.Test;
+
+import java.math.BigInteger;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class FactorialImperativeTest implements FactorialTest {
+
+  @Override
+  @Test
+  public void factorialCases() {
+    assertAll(
+      () -> assertEquals(new BigInteger("1"), Factorial.imperativeFactorial(0)),
+      () -> assertEquals(new BigInteger("1"), Factorial.imperativeFactorial(1)),
+      () -> assertEquals(new BigInteger("2"), Factorial.imperativeFactorial(2)),
+      () -> assertEquals(new BigInteger("6"), Factorial.imperativeFactorial(3)),
+      () -> assertEquals(new BigInteger("24"), Factorial.imperativeFactorial(4)),
+      () -> assertEquals(new BigInteger("30414093201713378043612608166064768844377641568960512000000000000"), Factorial.imperativeFactorial(50))
+    );
+  }
+}

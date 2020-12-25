@@ -1,0 +1,116 @@
+Assign4: Due 11:59PM November 20
+
+In this assignment we will design a logical characters processor. The processor will receive a series of characters as input and produce a series of characters as output. The processor may house any number of processing blocks. Not all blocks that are available may be used when creating a processor. Also, a block may be used more than once. The order in which the blocks are used may also vary.
+                                                            
+
+		...input... -> | block1 block2 block3 ... | -> ...output...
+                           Processor
+
+Let's discuss some examples of blocks and then revisit the processor.
+
+1. UpperCaseConverter Block
+	Given a character, this block will send out or return the character in uppercase.
+
+2. LowerCaseConverter Block
+	Given a character, this block will send out or return the character in lowercase.
+	
+3. Multiplier Block
+  Given a character, this block will send out or return two of the same character. For example, if it received 'a', it will produce 'aa'. If it receives '1', it will produce '11'.
+
+4. z-blocker Block
+  Given a character, if the character is a lowercase 'z', this block will not return or produce anything. If it is any other character, it will produce the given character as output. For example, 'a' will result in an output of 'a'.
+
+5. Z-blocker Block
+	This block will not return or produce an output if the character given is an uppercase 'Z'.
+	
+6. k-blocker Block
+   This block will not return or produce an output if the character given is lowercase 'k'.
+
+The program should allow end users to create other similar blocks they like.
+
+The end user should be able to create a processor using any series of blocks.
+
+For example, a user may create a processor with the following series of blocks:
+	UpperCaseConverter - z-blocker - LowerCaseConverter
+	
+After creating this processor, if a user were to send the following series of characters as input:
+
+	11abcdabcdabcdzzaazzabcd
+
+it will return the following output:
+
+	11abcdabcdabcdaaabcd
+
+In addition to designing a few sample blocks and the processor, we will create a console based driver program.
+	
+Design the program in such a way that:
+
+1. A user can specify the blocks available for use before the program starts. This should include pre-defined blocks and user created blocks.
+	
+2. The user can specify, through a file, the blocks they'd like to use and the order or sequence in which they'd like to use them.
+
+Think through the overall design of the program first. Then start with one small, but interesting and valuable part, and evolve the design and code incrementally.
+
+After completing the assignment answer these questions:
+
+1. What did you learn in this assignment?
+
+In this assignment we learned about breaking cyclic dependency, PMD violations and using Function from Java 8.
+
+One of the main things we learned during this assignment was using Functions from Java 8. Function takes in one type of input and allow us to convert it to another type.
+But in our case, we didn't need to convert it to another type, but only manipulate the string to multiply or block certain characters. One of the advantage Function gave was that
+it allowed us to use it as an assignment target for lambda expression. Where it help lessen the code and also reduce the complexity. This was one of the key help when trying
+to conquer the PMD violations.
+
+Another trouble we faced and learned about in the assignment is in regards to PMD violations and cyclic dependency. During testing, we implemented switch cases to check which processor
+is being currently processed with the block. In doing so, we encountered a pmd violation and that violation is about the complexity of too many loops and conditionals in our test.
+This was mainly because we were trying to read the file and while reading, initiate the process specified with the current block. This was too convoluted and had a code "smell" which 
+indicate that what we were doing is in the wrong direction.
+
+While trying to fix the pmd violation, we encountered cyclic dependency and this was caused by blockProcessor relying on Processor which need to look at the main file being read. This was
+basically a loop in itself and causes an issue when trying to run them all at the same time. We found the solution to be to separate Processor and BlockProcessor so that they run
+independent of each other while the driver console is initiated.
+
+2. What design principles did you use? List each one of them, discuss what this principle is, and give example(s) of where specifically you used it in this assignment.
+
+Regarding the design principles, we followed YAGNI, DRY, SLAP, and DIP.
+
+At the beginning of our program, we followed YAGNI closely to ensure we implement only what is needed and test what is there before going forward. This is useful as it
+prevents issues from arising and ensure that for every implementation we ensure code coverage and that certain methods would only do the one thing they are designed for. This became
+majorly prevalent when testing everything inside processor package, as we had to approach the whole thing systematically to ensure we cover every method and if its doing what its meant
+to do.
+
+For DRY, we had to make sure our test aren't repeating themselves especially since most of the test would have the same type of input, but different output. We solved this by
+making interfaces for both the ui and the test. The BlockProcessor being an interface that contains static methods and the test being an interface also with concrete classes that
+would override its method for each test. Later on we encountered a problem concerning DRY because there were too many loops and switch cases in the Processor interface. We managed
+to fix this by using Function and decorator with lambda to bypass having too many method calls upon running the program. Another issue was having the same test, but with different values.
+In order to solve the DRY principle violation, we used parametized test to fix this issue and follow the principle.
+
+For DIP, we made sure that the high and low level dependencies reduce the traditional dependencies from top to bottom. This is done by making sure no class derive from a
+concrete class. All concrete class would work through an interface and all testable methods become an override of an abstract method. By doing this, we ensured our program follows
+DIP and classes are loosely coupled in the test.
+
+Finally, the SLAP principle was easy to violate during the creation of this program. Especially when dealing with Processor and how it deals with the passed input and what method it will
+be calling. Essentially at certain points when writing the program, our code keeps diverging from the level of abstraction we had in mind. We had to refactor multiple times to correct
+this issue and essentially ensure that each method reference and what the method is doing, is on the same plane of abstraction.
+
+2. What design patterns did you use? List each one of them, discuss what this pattern is, and give example(s) of where specifically you used it in this assignment.
+
+In creating our program, we used four patterns that helped us make simple, clean and cohesive methods and code for our program. The patterns we mainly utilized are
+cascading pattern, composite pattern, factory method and decorator with lambda.
+
+We utilized cascading pattern when we were dealing with processor. Speciffically in the processInput method, we used cascading pattern to simplify
+and reduce the amount of code needed when dealing with the return. Cascading pattern allowed us to create a method which is easy to understand and
+change while being able to pass the data around without the need to temporarily store it.
+
+Composite pattern was used when we dealt with testing the methods. Specifically when we dealt with the blockProcessor methods, we had to use .apply
+because we were trying to test out same values but different test. This pattern came in handy while in trying to satisfy the DRY method because we 
+did not want to repeatedly use the same format of assert when testing the blockProcess method.
+
+We used factory method in our processor test. Where all the subclass would override the method processor from the BlockProcessorTest 
+interface. This was useful in allowing us to invoke the desired instiation and follow the DRY principle by giving
+us the option to invoke the same method without rewriting it for each method.
+
+Finally, we used decorator with lambda to add behavior to the object, but not methods to the object's actual interface. This was helpful in trying
+to solve the problem when it came to Createblocker method. Normally there would be three method implementation for blocker in this program. One of each for z-block, k-block, and Z-Block. But with decorator w/ lambda pattern, were able to specify to block the input character and replace it with a blank without having to hard code the character or duplicate the method itself.
+

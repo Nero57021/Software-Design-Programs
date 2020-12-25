@@ -1,0 +1,18 @@
+package processor;
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public interface Processor {
+  static String upperCaseConverterBlock(String input) {return input.toUpperCase();}
+
+  static String lowerCaseConverterBlock(String input) {
+    return input.toLowerCase();
+  }
+
+  static String multiplierBlock(String input) {return input.chars().mapToObj(val -> Character.toString(val).repeat(2)).collect(Collectors.joining());}
+
+  static Function<String, String> createBlocker(String characterToBlock){
+    return charToReplace -> characterToBlock.replace(charToReplace, "");
+  }
+}

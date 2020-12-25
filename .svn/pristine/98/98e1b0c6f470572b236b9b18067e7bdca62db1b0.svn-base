@@ -1,0 +1,15 @@
+package processor;
+
+import java.util.List;
+import java.util.function.Function;
+
+public interface Processor {
+
+  static String processInput(List<Function<String, String>> processes, String input){
+    for(var process: processes){ //Feedback: let's use functional style instead of imperative sytle loop
+      input = process.apply(input);
+    }
+
+    return input;
+  }
+}

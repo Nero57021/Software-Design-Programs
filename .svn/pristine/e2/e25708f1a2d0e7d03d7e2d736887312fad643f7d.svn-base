@@ -1,0 +1,9 @@
+package locator.service;
+
+import locator.preview.Location;
+
+public interface IssInformationService { //Feedback: pollution of interface. The user of this interface
+  //does not care about *all* these functions. They only care about one, the first one. We should not confuse interface with implementation (what we do vs. how we do it).
+  String getFlyOverTimeForLocation(Location location);
+
+}

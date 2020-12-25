@@ -1,0 +1,31 @@
+x canary test
+x factorialImperative given a zero as a number, return 1.
+x factorialImperative given one return 1.
+x factorialImperative given two return 2.
+x factorialImperative given three return 6.
+x factorialImperative given four return 24.
+x factorialImperative given five return 120.
+x factorialImperative given ten return 3628800
+x factorialImperative given 50 returns 30414093201713378043612608166064768844377641568960512000000000000
+x factorialImperative given 100 returns 30414093201713378043612608166064768844377641568960512000000000000
+x factorialImperative given a negative number, throw an exception.
+
+x factorialRecursive given a zero as a number, return 1.
+x factorialRecursive given one return 1.
+x factorialRecursive given two return 2.
+x factorialRecursive given three return 6.
+x factorialRecursive given four return 24.
+x factorialRecursive given five return 120.
+x factorialRecursive given ten return 3628800
+x factorialRecursive given 50 returns 30414093201713378043612608166064768844377641568960512000000000000
+x factorialRecursive given a negative number, throw an exception.
+
+_ factorialFunctional given a zero as a number, return 1.
+_ factorialFunctional given one return 1.
+_ factorialFunctional given two return 2.
+_ factorialFunctional given three return 6.
+_ factorialFunctional given four return 24.
+_ factorialFunctional given five return 120.
+_ factorialFunctional given ten return 3628800
+_ factorialFunctional given 50 returns 30414093201713378043612608166064768844377641568960512000000000000
+_ factorialFunctional given a negative number, throw an exception.

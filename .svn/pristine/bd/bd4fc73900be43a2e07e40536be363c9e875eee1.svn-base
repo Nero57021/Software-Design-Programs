@@ -1,0 +1,6 @@
+x canary test
+x take in an empty list of coordinates and return empty map of Position and time
+x take in an invalid entry of coordinate and return empty/error //Feedback: this can come later. Let's look at the next test first.
+- take in a single coordinate and return coordinate with time
+- take in a list of 2 coordinate and return coordinates with time
+- take in a list of 3 coordinate and one is dupe, return coordinates w/time without any dupes

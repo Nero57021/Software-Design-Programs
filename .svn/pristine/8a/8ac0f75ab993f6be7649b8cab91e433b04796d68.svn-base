@@ -1,0 +1,32 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.IssInformationService;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+import static java.util.stream.Collectors.toMap;
+
+public class IssInformation {
+
+  private IssInformationService informationService;
+
+  public void setIssInformationService(IssInformationService service) {
+    informationService = service;
+  }
+
+  public Map<Location, String> getFlyOverTimeForLocations(List<Location> locations) {
+    return locations.stream()
+      .collect(toMap(Function.identity(), this::getFlyOverTimeForOneLocation));
+  }
+
+  private String getFlyOverTimeForOneLocation(Location location) {
+    try {
+      return informationService.getFlyOverTimeForLocation(location);
+    } catch (Exception ex) {
+      return ex.getMessage();
+    }
+  }
+}

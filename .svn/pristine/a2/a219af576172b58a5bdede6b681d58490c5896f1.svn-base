@@ -1,0 +1,34 @@
+package factorial;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.math.BigInteger;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public abstract class FactorialTest { //Feedback: interface
+  @BeforeEach
+   void setUp(){ //Feedback: please remove we are not using the instance.
+    Factorial factorial = new Factorial(); //Feedback: no need for this, we are not using the instance
+  }
+
+  @Test
+  void canary() {
+    assertTrue(true);
+  }
+
+  abstract BigInteger factorialCases(long number); //Feedback: we can remove the word abstract. default BigInteger factorial(int number)
+
+  @Test
+  void testCases(){ //Feedback: mark as a default mthod
+    assertAll(
+      () -> assertEquals(new BigInteger("1"), factorialCases(0)),
+      () -> assertEquals(new BigInteger("1"), factorialCases(1)),
+      () -> assertEquals(new BigInteger("2"), factorialCases(2)),
+      () -> assertEquals(new BigInteger("6"), factorialCases(3)),
+      () -> assertEquals(new BigInteger("24"), factorialCases(4)),
+      () -> assertEquals(new BigInteger("30414093201713378043612608166064768844377641568960512000000000000"), factorialCases(50))
+    );
+  }
+}

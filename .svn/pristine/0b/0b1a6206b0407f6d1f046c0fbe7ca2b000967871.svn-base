@@ -1,0 +1,399 @@
+package game;
+
+import game.preview.Position;
+import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
+import static game.GameOfLife.CellState.ALIVE;
+import static game.GameOfLife.CellState.DEAD;
+import static org.junit.jupiter.api.Assertions.*;
+
+class GameOfLifeTest {
+	
+	@Test
+	public void Canary() {
+		assertTrue(true);
+	}
+	
+	@Test
+	public void behaviorOfADeadCell() {
+		
+		assertAll(() -> assertEquals(DEAD, GameOfLife.computeCellStatus(DEAD, 0)),
+			() -> assertEquals(DEAD, GameOfLife.computeCellStatus(DEAD, 1)),
+			() -> assertEquals(DEAD, GameOfLife.computeCellStatus(DEAD, 2)),
+			() -> assertEquals(DEAD, GameOfLife.computeCellStatus(DEAD, 5)),
+			() -> assertEquals(DEAD, GameOfLife.computeCellStatus(DEAD, 8)),
+			() -> assertEquals(ALIVE, GameOfLife.computeCellStatus(DEAD, 3)));
+	}
+	
+	@Test
+	public void behaviorOfALiveCell() {
+		
+		assertAll(() -> assertEquals(DEAD, GameOfLife.computeCellStatus(ALIVE, 1)),
+			() -> assertEquals(DEAD, GameOfLife.computeCellStatus(ALIVE, 4)),
+			() -> assertEquals(DEAD, GameOfLife.computeCellStatus(ALIVE, 8)),
+			() -> assertEquals(ALIVE, GameOfLife.computeCellStatus(ALIVE, 2)),
+			() -> assertEquals(ALIVE, GameOfLife.computeCellStatus(ALIVE, 3)));
+	}
+	
+	@Test
+	public void getNeighborsForPosition5_5() {
+		
+		assertEquals(List.of(new Position(4, 4), new Position(4, 5), new Position(4, 6),
+			new Position(5, 4), new Position(5, 6),
+			new Position(6, 4), new Position(6, 5), new Position(6, 6)),
+			GameOfLife.generateSignalsForOnePosition(new Position(5, 5)));
+	}
+	
+	@Test
+	public void getNeighborsForPosition4_4() {
+		
+		assertEquals(List.of(new Position(3, 3), new Position(3, 4), new Position(3, 5),
+			new Position(4, 3), new Position(4, 5),
+			new Position(5, 3), new Position(5, 4), new Position(5, 5)),
+			GameOfLife.generateSignalsForOnePosition(new Position(4, 4)));
+	}
+	
+	@Test
+	public void getNeighborsForPosition3_3() {
+		
+		assertEquals(List.of(new Position(2, 2), new Position(2, 3), new Position(2, 4),
+			new Position(3, 2), new Position(3, 4),
+			new Position(4, 2), new Position(4, 3), new Position(4, 4)),
+			GameOfLife.generateSignalsForOnePosition(new Position(3, 3)));
+	}
+	
+	@Test
+	public void getNeighborsForPositionBorder0_0() {
+		
+		assertEquals(List.of(new Position(-1, -1), new Position(-1, 0), new Position(-1, 1),
+			new Position(0, -1), new Position(0, 1),
+			new Position(1, -1), new Position(1, 0), new Position(1, 1)),
+			GameOfLife.generateSignalsForOnePosition(new Position(0, 0)));
+	}
+	
+	@Test
+	public void getNeighborsForGivenPoint2_3Returns8Neighbors() {
+		
+		assertEquals(List.of(new Position(1, 2),
+			new Position(1, 3),
+			new Position(1, 4),
+			new Position(2, 2),
+			new Position(2, 4),
+			new Position(3, 2),
+			new Position(3, 3),
+			new Position(3, 4)),
+			GameOfLife.generateSignalsForOnePosition(new Position(2, 3)));
+	}
+	
+	@Test
+	public void getNeighborsForGivenPoint3_3Returns8Neighbors() {
+		
+		assertEquals(List.of(new Position(2, 2),
+			new Position(2, 3),
+			new Position(2, 4),
+			new Position(3, 2),
+			new Position(3, 4),
+			new Position(4, 2),
+			new Position(4, 3),
+			new Position(4, 4)),
+			GameOfLife.generateSignalsForOnePosition(new Position(3, 3)));
+	}
+	
+	@Test
+	public void getNeighborsForGivenPoint2_4Returns8Neighbors() {
+		
+		assertEquals(List.of(new Position(1, 3),
+			new Position(1, 4),
+			new Position(1, 5),
+			new Position(2, 3),
+			new Position(2, 5),
+			new Position(3, 3),
+			new Position(3, 4),
+			new Position(3, 5)),
+			GameOfLife.generateSignalsForOnePosition(new Position(2, 4)));
+	}
+	
+	@Test
+	public void getNeighborsForGivenPoint0_0Returns8Neighbors() {
+		
+		assertEquals(List.of(new Position(-1, -1),
+			new Position(-1, 0),
+			new Position(-1, 1),
+			new Position(0, -1),
+			new Position(0, 1),
+			new Position(1, -1),
+			new Position(1, 0),
+			new Position(1, 1)),
+			GameOfLife.generateSignalsForOnePosition(new Position(0, 0)));
+	}
+	
+	@Test
+	public void forGivenEmptyListOfPointsReturns0Signals() {
+		
+		assertEquals(List.of(), GameOfLife.generateSignalsForMultiplePositions(List.of()));
+	}
+	
+	@Test
+	public void forGivenOneListOfPointsReturns8Signals() {
+		
+		assertEquals(List.of(new Position(1, 4),
+			new Position(1, 5),
+			new Position(1, 6),
+			new Position(2, 4),
+			new Position(2, 6),
+			new Position(3, 4),
+			new Position(3, 5),
+			new Position(3, 6)),
+			GameOfLife.generateSignalsForMultiplePositions(List.of(new Position(2, 5))));
+	}
+	
+	@Test
+	public void forGivenTwoListOfPointsReturns16Signals() {
+		
+		assertEquals(List.of(new Position(1, 4),
+			(new Position(1, 5)),
+			(new Position(1, 6)),
+			(new Position(2, 4)),
+			(new Position(2, 6)),
+			(new Position(3, 4)),
+			(new Position(3, 5)),
+			(new Position(3, 6)),
+			(new Position(3, 6)),
+			(new Position(3, 7)),
+			(new Position(3, 8)),
+			(new Position(4, 6)),
+			(new Position(4, 8)),
+			(new Position(5, 6)),
+			(new Position(5, 7)),
+			(new Position(5, 8))
+			),
+			GameOfLife.generateSignalsForMultiplePositions(List.of(new Position(2, 5),
+				new Position(4, 7)))
+		);
+	}
+	
+	@Test
+	public void forGivenThreeListOfPointsReturns24Signals() {
+		
+		assertEquals(List.of(new Position(1, 4),
+			(new Position(1, 5)),
+			(new Position(1, 6)),
+			(new Position(2, 4)),
+			(new Position(2, 6)),
+			(new Position(3, 4)),
+			(new Position(3, 5)),
+			(new Position(3, 6)),
+			(new Position(3, 6)),
+			(new Position(3, 7)),
+			(new Position(3, 8)),
+			(new Position(4, 6)),
+			(new Position(4, 8)),
+			(new Position(5, 6)),
+			(new Position(5, 7)),
+			(new Position(5, 8)),
+			(new Position(5, 8)),
+			(new Position(5, 9)),
+			(new Position(5, 10)),
+			(new Position(6, 8)),
+			(new Position(6, 10)),
+			(new Position(7, 8)),
+			(new Position(7, 9)),
+			(new Position(7, 10))
+			),
+			GameOfLife.generateSignalsForMultiplePositions(
+				List.of(new Position(2, 5),
+					new Position(4, 7),
+					new Position(6, 9)))
+		);
+	}
+	
+	@Test
+	void countNeighborsGivenAnEmptyListReturns_0() {
+		
+		assertEquals(Map.of(), GameOfLife.countSignals(List.of()));
+	}
+	
+	@Test
+	void countSignalForOnePositionReturnAMapWithOneKey() {
+		
+		Position signal = new Position(1, 3);
+		assertEquals(Map.of(new Position(1, 3), 1), GameOfLife.countSignals(List.of(signal)));
+		
+	}
+	
+	@Test
+	void count1SignalGivenDuplicateCoordinate() {
+		
+		Position signal1 = new Position(1, 3);
+		assertEquals(Map.of(new Position(1, 3), 2), GameOfLife.countSignals(List.of(signal1, signal1)));
+	}
+	
+	@Test
+	void count2DuplicateSignal_and_1_Non_Duplicate() {
+		
+		Position signal1 = new Position(2, 4);
+		Position signal2 = new Position(3, 4);
+		
+		assertEquals(Map.of(new Position(2, 4), 2,
+			new Position(3, 4), 1),
+			GameOfLife.countSignals(List.of(signal1, signal2, signal1)));
+	}
+	
+	@Test
+	void blockGenerationsReturnsSameBlock() {
+		
+		assertEquals(new HashSet<>(List.of(
+			new Position(1, 1),
+			new Position(1, 2),
+			new Position(2, 2),
+			new Position(2, 1))
+		), new HashSet<>(GameOfLife.nextGeneration(List.of(
+			new Position(1, 1),
+			new Position(1, 2),
+			new Position(2, 2),
+			new Position(2, 1)
+		))));
+	}
+	
+	@Test
+	void beeHiveGenerationsReturnsSameBeehive() {
+		
+		assertEquals(new HashSet<>(List.of(
+			new Position(0, 1),
+			new Position(0, 2),
+			new Position(1, 0),
+			new Position(1, 3),
+			new Position(2, 1),
+			new Position(2, 2))
+		), new HashSet<>(GameOfLife.nextGeneration(List.of(
+			new Position(0, 1),
+			new Position(0, 2),
+			new Position(1, 0),
+			new Position(1, 3),
+			new Position(2, 1),
+			new Position(2, 2))
+		)));
+	}
+	
+	@Test
+	void horizontalBlinkerReturnsVerticalBlinker() {
+		
+		assertEquals(
+			new HashSet<>(List.of(
+				new Position(3, 4),
+				new Position(3, 5),
+				new Position(3, 3)
+			)),
+			new HashSet<>(GameOfLife.nextGeneration(List.of(
+				new Position(2, 4),
+				new Position(3, 4),
+				new Position(4, 4)
+			)))
+		);
+	}
+	
+	@Test
+	void verticalBlinkerReturnsHorizontalBlinker() {
+		
+		assertEquals(new HashSet<>(List.of(
+			new Position(5, 8),
+			new Position(6, 8),
+			new Position(4, 8))),
+			new HashSet<>(GameOfLife.nextGeneration(List.of(
+				new Position(5, 9),
+				new Position(5, 8),
+				new Position(5, 7))
+			)));
+	}
+	
+	@Test
+	void gliderWithLiveCellOnTopReturnCellMovingRight() {
+		
+		assertEquals(new HashSet<>(List.of(
+			new Position(4, 3),
+			new Position(2, 4),
+			new Position(3, 2),
+			new Position(4, 4),
+			new Position(3, 3))),
+			new HashSet<>(GameOfLife.nextGeneration(List.of(
+				new Position(3, 5),
+				new Position(4, 4),
+				new Position(4, 3),
+				new Position(3, 3),
+				new Position(2, 3))
+			)));
+	}
+	
+	@Test
+	void getBoundsEmptyListReturnsEmptyList() {
+		assertEquals(List.of(), GameOfLife.getBounds(List.of()));
+	}
+	
+	@Test
+	void getListOfSamePositionAppearingTwice() {
+		Position p1 = new Position(2, 6);
+		assertEquals(
+			List.of(p1, p1),
+			GameOfLife.getBounds(List.of(p1))
+		);
+	}
+	
+	@Test
+	void givenTwoPointReturnWithBothPointInSpecifiedOrder() {
+		Position p1 = new Position(2, 6);
+		Position p2 = new Position(4, 8);
+		assertEquals(
+			List.of(p1, p2),
+			GameOfLife.getBounds(List.of(p2, p1))
+		);
+	}
+	
+	@Test
+	void givenThreePointReturnWithBothPointInSpecifiedOrder() {
+		Position p1 = new Position(0, 0);
+		Position p2 = new Position(3, 4);
+		Position p3 = new Position(4, 3);
+		assertEquals(
+			List.of(p1, new Position(4, 4)),
+			GameOfLife.getBounds(List.of(p1, p2, p3))
+		);
+	}
+	
+	@Test
+	void givenFourPointReturnWithBothPointInSpecifiedOrder() {
+		Position p1 = new Position(2, 5);
+		Position p2 = new Position(4, 3);
+		Position p3 = new Position(3, 4);
+		Position p4 = new Position(8, 1);
+		assertEquals(
+			List.of(new Position(2, 1), new Position(8, 5)),
+			GameOfLife.getBounds(List.of(p1, p2, p3, p4))
+		);
+	}
+	// We thought that before we could give GUI any signals we need to find a way to parse those
+	// Strings to a list of signals
+	@Test
+	void givenEmptyStringParseGivenPointsToListReturnEmpty()
+	{
+		assertEquals(
+						Collections.emptyList(),
+						GameOfLife.parseGivenPointsToList("")
+		);
+	}
+	@Test
+	void givenInvalidStringParseGivenPointsToListReturnEmpty()
+	{
+		assertAll(
+						() -> assertEquals(Collections.emptyList(), GameOfLife.parseGivenPointsToList("")),
+						() -> assertEquals(Collections.emptyList(), GameOfLife.parseGivenPointsToList("randomNotAllowed")),
+						() -> assertEquals(Collections.emptyList(), GameOfLife.parseGivenPointsToList("0)")),
+						() -> assertEquals(Collections.emptyList(), GameOfLife.parseGivenPointsToList("7(9)")),
+						() -> assertEquals(Collections.emptyList(), GameOfLife.parseGivenPointsToList("(8,3"))
+		);
+	}
+}

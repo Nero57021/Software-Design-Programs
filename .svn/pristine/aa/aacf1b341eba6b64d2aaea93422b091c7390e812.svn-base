@@ -1,0 +1,37 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.IssInformationService;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class IssInformation {
+
+    IssInformationService informationService; //Feedback: private
+
+//Feedback: in Java we do not use _ for method names
+    public Map<Location, String> get_list_of_times_for_locations(List<Location> locations) {
+
+        Map<Location, String> timeOfLocation = new HashMap<>();
+
+        if (locations.isEmpty()) {
+            return Map.of();
+        }
+
+        //Feedback: let's use functional style here instead of imperative style.
+        for (Location location : locations) {
+            String time = informationService.setIssInformationService(location.lat(), location.lon());
+            timeOfLocation.put(location, time);
+        }
+
+        return timeOfLocation;
+    }
+
+    public void setIssInformationService(IssInformationService service) { //Feedback: right after the field, before the function
+        informationService = service;
+    }
+
+}
+

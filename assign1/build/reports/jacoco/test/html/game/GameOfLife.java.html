@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameOfLife.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assign1</a> &gt; <a href="index.source.html" class="el_package">game</a> &gt; <span class="el_source">GameOfLife.java</span></div><h1>GameOfLife.java</h1><pre class="source lang-java linenums">package game;
+
+import game.preview.Position;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+import static java.util.stream.Collectors.*;
+
+public interface GameOfLife {
+	
+	final int THREE_LIVE_NEIGHBORS = 3;
+	final int TWO_LIVE_NEIGHBORS = 2;
+	
+<span class="fc" id="L18">	enum CellState {DEAD, ALIVE}</span>
+	
+	static CellState computeCellStatus(CellState currentStatus, int numberOfLiveNeighbors) {
+<span class="fc bfc" id="L21" title="All 6 branches covered.">		return numberOfLiveNeighbors == THREE_LIVE_NEIGHBORS || currentStatus == CellState.ALIVE &amp;&amp; numberOfLiveNeighbors == TWO_LIVE_NEIGHBORS</span>
+<span class="fc" id="L22">			? CellState.ALIVE</span>
+<span class="fc" id="L23">			: CellState.DEAD;</span>
+	}
+	
+	static List&lt;Position&gt; generateSignalsForOnePosition(Position liveCell) {
+		
+<span class="fc" id="L28">		int x = liveCell.x();</span>
+<span class="fc" id="L29">		int y = liveCell.y();</span>
+		
+<span class="fc" id="L31">		List&lt;Position&gt; neighbors = new ArrayList&lt;&gt;();</span>
+		
+<span class="fc bfc" id="L33" title="All 2 branches covered.">		for (int i = -1; i &lt; 2; i++) {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">			for (int j = -1; j &lt; 2; j++) {</span>
+<span class="fc bfc" id="L35" title="All 4 branches covered.">				if ((i != 0 || j != 0)) {</span>
+<span class="fc" id="L36">					neighbors.add(new Position(x + i, y + j));</span>
+				}
+			}
+		}
+		
+<span class="fc" id="L41">		return neighbors;</span>
+	}
+	
+	static List&lt;Position&gt; generateSignalsForMultiplePositions(List&lt;Position&gt; liveCells) {
+		
+<span class="fc" id="L46">		return liveCells.stream()</span>
+<span class="fc" id="L47">			.flatMap(position -&gt; generateSignalsForOnePosition(position).stream())</span>
+<span class="fc" id="L48">			.collect(toList());</span>
+	}
+	
+	static Map&lt;Position, Integer&gt; countSignals(List&lt;Position&gt; signals) {
+		
+<span class="fc" id="L53">		return signals.stream()</span>
+<span class="fc" id="L54">			.collect(groupingBy(Function.identity(), summingInt(signal -&gt; 1)));</span>
+	}
+	
+	static List&lt;Position&gt; nextGeneration(List&lt;Position&gt; positions) {
+		
+<span class="fc" id="L59">		return countSignals(generateSignalsForMultiplePositions(positions))</span>
+<span class="fc" id="L60">			.entrySet()</span>
+<span class="fc" id="L61">			.stream()</span>
+<span class="fc" id="L62">			.filter(positionAndCount -&gt;</span>
+<span class="fc bfc" id="L63" title="All 4 branches covered.">				CellState.ALIVE == computeCellStatus(positions.contains(positionAndCount.getKey()) ? CellState.ALIVE : CellState.DEAD,</span>
+<span class="fc" id="L64">					positionAndCount.getValue()))</span>
+<span class="fc" id="L65">			.map(Map.Entry::getKey)</span>
+<span class="fc" id="L66">			.collect(toList());</span>
+	}
+	
+	static List&lt;Position&gt; getBounds(List&lt;Position&gt; points) {
+		
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		if (points.isEmpty()) {</span>
+<span class="fc" id="L72">			return List.of();</span>
+		}
+		
+<span class="fc" id="L75">		int minX = points.stream().min(Comparator.comparing(Position::x)).get().x();</span>
+<span class="fc" id="L76">		int minY = points.stream().min(Comparator.comparing(Position::y)).get().y();</span>
+		
+<span class="fc" id="L78">		int maxX = points.stream().max(Comparator.comparing(Position::x)).get().x();</span>
+<span class="fc" id="L79">		int maxY = points.stream().max(Comparator.comparing(Position::y)).get().y();</span>
+		
+<span class="fc" id="L81">		return List.of(new Position(minX, minY), new Position(maxX, maxY));</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

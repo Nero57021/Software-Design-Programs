@@ -1,0 +1,34 @@
+package factorial;
+
+import java.math.BigInteger;
+import java.util.stream.Stream;
+
+public class Factorial {
+
+  public BigInteger factorialImperative(long number) { //Feedback: this function does not use any state of the obect. Should we make it static
+
+    if (number < 0) { //Feedback: no need
+      throw new RuntimeException("Cannot be negative number");
+    }
+
+    BigInteger product = BigInteger.ONE; //Feedback: a blank line after this line, please
+    for (int i = 1; i <= number; i++) {
+      product = product.multiply(new BigInteger(String.valueOf(i)));
+    }
+
+    return product;
+  }
+
+  public BigInteger factorialRecursive(long number) {
+
+    if (number < 0) { //Feedback: no need
+      throw new RuntimeException("Cannot be negative number");
+    }
+
+    if (number == 0) {
+      return BigInteger.ONE;
+    }
+
+    return BigInteger.valueOf(number).multiply(factorialRecursive(number - 1));
+  }
+}

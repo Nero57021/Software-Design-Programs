@@ -1,0 +1,12 @@
+package locator.service;
+
+import locator.preview.Location;
+
+public interface WebService {
+
+  String getRawResponse(String url);
+
+  String parseJSON(String rawJSON);
+
+  String getFlyOverTime(Location location);
+}

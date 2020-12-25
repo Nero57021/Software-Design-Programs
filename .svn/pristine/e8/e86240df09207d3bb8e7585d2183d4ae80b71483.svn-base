@@ -1,0 +1,22 @@
+package processor;
+
+import org.junit.jupiter.params.provider.Arguments;
+
+import java.util.stream.Stream;
+
+public class LowerCaseKBlockerTest implements ProcessorTest{
+
+  private static Stream<Arguments> testSamples() {
+    return Stream.of(
+      Arguments.of("ak", "a"),
+      Arguments.of("Ak", "A"),
+      Arguments.of("1k", "1"),
+      Arguments.of("~k", "~"),
+      Arguments.of("k", "")
+    );
+  }
+
+  @Override
+  public String processor(String input) {return Processor.lowerCaseKBlockerBlock(input);}
+
+}

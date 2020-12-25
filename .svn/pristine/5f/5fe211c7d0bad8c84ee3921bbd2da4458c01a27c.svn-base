@@ -1,0 +1,46 @@
+x canary test
+
+uppercase:
+x convert "A" to "A"
+x convert "a" to "A"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+lowercase:
+x convert "A" to "a"
+x convert "a" to "a"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+multiplier:
+x convert "A" to "AA"
+x convert "a" to "aa"
+x convert "1" to "11"
+x convert "~" to "~~"
+x convert "" to ""
+
+Blocker:
+x convert "z" to ""
+x convert "Z" to ""
+x convert "k" to ""
+x convert "~" to "~"
+x convert "1" to "1"
+x convert "" to ""
+
+x processor takes string "abzCd" and no blocks, returns given string
+x processor takes string "abzCd" and uppercase block, returns string in uppercase
+x processor takes string "abzCd" and lowercase block, returns string in lower case
+x processor takes string "abzCd" and multiplier block, returns string with letters repeated, that is aabbzzCCdd
+
+x processor takes string "abzcd" and uppercase block and Z blocker, returns ABCD
+x processor takes string "abzcd" and Z blocker and uppercase, returns ABZCD
+x processor takes string "abzcd" and uppercase and multiplier
+x processor takes string "abzcd" and Z blocker, uppercase, and multiplier
+
+(Please feel free to change the strings as necessary)
+- Given the string "BuiltinBlocks:upperCase" getBlock returns the upperCase function
+- Given the string "BuiltinBlocks:multiplier" getBlock returns the multiplier function
+- Given the string "BuiltinBlocks:makeBlocker:Z" getBlock returns the upperCaseZBlocker function
+- Given the string "BuiltinBlocks:makeBlocker:k" getBlock returns the lowerCasekBlocker function

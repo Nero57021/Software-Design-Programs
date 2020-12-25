@@ -1,0 +1,33 @@
+package locator;
+
+import locator.preview.Location;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class IssLogicTest {
+	
+	private IssLogic issLogic;
+	
+	@BeforeEach
+	void initialize() {
+		issLogic = new IssLogic();
+	}
+	
+	@Test
+	void canary() {
+		assert (true);
+	}
+	
+	@Test
+	void givenValidCoordinateReturnLondonTimeInBST() {
+		assertEquals("05:50 AM BST", issLogic.computeTimeFromLocation(new Location(51.5074, -0.118092)));
+		//Feedback: should this be 
+	}
+	
+	@Test
+	void givenValidCoordinateReturnHoustonTimeInCDT() {
+		assertEquals("11:50 PM CDT", issLogic.computeTimeFromLocation(new Location(29.7604, -95.3698)));
+	}
+}

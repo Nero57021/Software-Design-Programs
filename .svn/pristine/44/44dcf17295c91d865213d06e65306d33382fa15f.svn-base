@@ -1,0 +1,64 @@
+[Reviewed 10/29/20 05:33 AM MDT]
+synopsis: good work so far
+
+details: 
+
+Good work so far.
+
+Let's remove the unnecessary interface.
+
+Please drop an email for a quick review after these changes. Please modify the requestReview.txt file also.
+
+------------------------------------------------------------------------------
+[Reviewed 10/28/20 06:25 AM MDT]
+synopsis: let's refactor
+
+details: 
+
+Please see suggestions in code.
+
+Please drop an email for a quick review after these changes. Please modify the requestReview.txt file also.
+
+------------------------------------------------------------------------------
+[Reviewed 10/27/20 08:01 AM MDT]
+synopsis: good work so far
+
+details: 
+
+Good work so far.
+
+We can merge the factorial functions into one class:
+factorialImperative
+factorialRecursive
+
+Interface for Factorial to be implemented by two classes has no value.
+
+------------------------------------------------------------------------------
+[Reviewed 10/26/20 05:46 AM MDT]
+synopsis: let's keep it DRY
+
+details: 
+
+Please see suggestions in code.
+
+------------------------------------------------------------------------------
+[Reviewed 10/24/20 13:24 PM MDT]
+synopsis: one more test and then the next step
+
+details: 
+
+Please see tests.txt.
+
+Then, let's get started with the next function.
+
+------------------------------------------------------------------------------
+[Reviewed 10/24/20 05:45 AM MDT]
+synopsis: YAGNI
+
+details: 
+
+Do not bring in abstractions until there is a clear need for it. Postpone design decisions until you can't avoid them.
+
+Please drop an email for a quick review after these changes. Please modify the requestReview.txt file also.
+
+------------------------------------------------------------------------------

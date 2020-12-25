@@ -1,0 +1,27 @@
+package locator;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class IssLogicTest {
+	
+	@Test
+	void canary() {
+		assert (true);
+	}
+	
+	@Test
+	void givenEmptyCoordinateReturnEmpty() {
+		assertEquals(Map.of(), IssLogic.computeTimeFromLocation(List.of()));
+		//Feedback: getTime quite does not tell what we are expecting this function to do for us. Let's give a better name
+	}
+	
+//	@Test
+//	void givenInvalidCoordinateReturnEmpty() { //Feedback: we can look at invalid later.
+//		assertEquals(Map.of(), IssLogic.getTime(List.of(new Location(30778778.2672, -9767868.7431))));
+//	}
+}

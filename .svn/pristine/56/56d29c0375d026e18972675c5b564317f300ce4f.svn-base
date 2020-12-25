@@ -1,0 +1,35 @@
+package processor;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class BlockAccessorTest {
+
+    @Test
+  void givenAnStringGetBlockReturnsUpperCaseFunction() throws Exception {
+    assertEquals("A", BlockAccessor.getBlock("BuiltinBlocks:upperCase").apply("a"));
+  }
+
+  @Test
+  void givenAnStringGetBlockReturnsMultiplierFunction() throws Exception {
+    assertEquals("aa", BlockAccessor.getBlock("BuiltinBlocks:multiplier").apply("a"));
+  }
+
+  @Test
+  void givenAnStringGetBlockReturnsUpperCaseZBlockerFunction() throws Exception {
+    assertEquals("a", BlockAccessor.getBlock("BuiltinBlocks:createBlocker:Z").apply("aZ"));
+  }
+
+  @Test
+  void givenAnStringGetBlockReturnsLowerCaseZBlockerFunction() throws Exception {
+    assertEquals("a", BlockAccessor.getBlock("BuiltinBlocks:createBlocker:k").apply("ak"));
+  }
+
+  @Test
+  void invokeMethodReturnsRuntimeException(){
+      assertThrows(RuntimeException.class, () -> BlockAccessor.invokeMethod(null, "a"));
+  }
+
+}

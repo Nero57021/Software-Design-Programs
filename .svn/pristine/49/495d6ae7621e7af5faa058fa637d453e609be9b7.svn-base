@@ -1,0 +1,73 @@
+package processor;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.function.Function;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class ProcessorTest {
+
+  @Test
+  void givenAStringAndNoBlocksReturnGivenString() {
+    assertEquals("abzCd", Processor.processInput("abzCd"));
+  }
+
+  @Test
+  void givenAStringUppercaseBlockReturnString() {
+    assertEquals("ABZCD", Processor.processInput("abzCd", BlockProcessor::upperCase));
+  }
+
+  @Test
+  void givenAStringLowercaseBlockReturnString() {
+    assertEquals("abzcd", Processor.processInput("abzCd", BlockProcessor::lowerCase));
+  }
+
+  @Test
+  void givenAStringMultiplierBlockReturnString() {
+    assertEquals("aabbzzCCdd", Processor.processInput("abzCd", BlockProcessor::multiplier));
+  }
+
+  @Test
+  void givenAStringUppercaseAndZBlockerBlockReturnString() {
+    assertEquals("ABCD", Processor.processInput("abzcd",
+      BlockProcessor::upperCase,
+      BlockProcessor.createBlocker("Z")));
+  }
+
+  @Test
+  void givenAStringZBlockerAndUppercaseBlockReturnString() {
+    assertEquals("ABZCD", Processor.processInput("abzcd",
+      BlockProcessor.createBlocker("Z"),
+      BlockProcessor::upperCase));
+  }
+
+  @Test
+  void givenAStringUppercaseAndMultiplierBlockReturnString() {
+    assertEquals("AABBZZCCDD", Processor.processInput("abzcd",
+      BlockProcessor::upperCase,
+      BlockProcessor::multiplier));
+  }
+
+  @Test
+  void givenAStringZBlockerUppercaseAndMultiplierBlockReturnString() {
+    assertEquals("AABBZZCCDD", Processor.processInput("abzcd",
+      BlockProcessor.createBlocker("Z"),
+      BlockProcessor::upperCase,
+      BlockProcessor::multiplier));
+  }
+
+  //Feedback: SRP. The following should not be in this test class.
+  @Test
+  void givenAnStringGetBlockReturnsUpperCaseFunction() throws NoSuchMethodException, ClassNotFoundException {
+    assertEquals(Class.forName("processor.BlockProcessor").getMethod("upperCase", String.class), Processor.getBlock("BuiltinBlocks:upperCase"));
+  }
+
+  @Test
+  void givenAnStringGetBlockReturnsMultiplierFunction() throws NoSuchMethodException, ClassNotFoundException {
+    assertEquals(Class.forName("processor.BlockProcessor").getMethod("multiplier", String.class), Processor.getBlock("BuiltinBlocks:multiplier"));
+  }
+
+
+}

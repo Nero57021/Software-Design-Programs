@@ -1,0 +1,68 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.WebService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+public class WebServiceTest { //Feedback: need a better name for this test class.
+  private final String VALID_JSON_RESPONSE = "{\"message\":\"success\",\"request\":{\"altitude\":100,\"datetime\":1602201251,\"latitude\":29.72167,\"longitude\":-95.343631,\"passes\":1},\"response\":[{\"duration\":645,\"risetime\":1602203714}]}";
+  private final String SAMPLE_URL = "http://api.open-notify.org/iss-pass.json?lat=29.721670&lon=-95.343631&n=1";
+
+  public WebService webService;
+  public WebService mockWebService; //Feedback: Please remove
+
+  @BeforeEach
+  void init() {
+    webService = new WebService();
+    mockWebService = mock(WebService.class); //Feedback: Please remove
+  }
+
+  @Test
+  void getRawResponseTakesURLReturnsPassesLatAndLong() {
+    assertEquals(VALID_JSON_RESPONSE, webService.getRawResponse(SAMPLE_URL));
+    
+    //Feedback: here assert that the response contains the words passes, latitude, and longitude
+  }
+
+  @Test
+  void parseJSONTakesRawJSONReturnsOneTime() {
+    assertEquals("1602203714", webService.parseJSON(VALID_JSON_RESPONSE));
+  }
+
+  @Test
+  void parseJSONTakesRawJSONReturnsTwoTime() {
+    final String VALID_RESPONSE = "{\"message\":\"success\",\"request\":{\"altitude\":100,\"datetime\":1602207281,\"latitude\":30.2672,\"longitude\":-97.7431,\"passes\":1},\"response\":[{\"duration\":547,\"risetime\":1602209521}]}";
+    webService = spy(WebService.class);
+
+    doReturn("1602209521").when(webService).parseJSON(VALID_RESPONSE);
+
+    assertEquals("1602209521", webService.parseJSON(VALID_RESPONSE));
+    //Feedback: let's watch this very carefully.
+    
+    //doReturn... this line creates a stub or parseJSON.
+    
+    //assertEquals... this line tests the parseJSON
+    
+    //Thus we tested the stub.
+    
+    //We should *never* test a stub.
+  }
+
+  @Test
+  void getFlyOverTimeTakesLocationReturnResponseFromParseJSON() {
+    final String VALID_RESPONSE = "{\"message\":\"success\",\"request\":{\"altitude\":100,\"datetime\":1602207281,\"latitude\":30.2672,\"longitude\":-97.7431,\"passes\":1},\"response\":[{\"duration\":547,\"risetime\":1602209521}]}";
+
+    webService = spy(WebService.class);
+    doReturn(VALID_RESPONSE).when(webService).getRawResponse("http://api.open-notify.org/iss-pass.json?lat=30.267200&lon=-97.743100&n=1");
+    doReturn("1602209521").when(webService).parseJSON(VALID_RESPONSE);
+
+    assertEquals("1602209521", webService.getFlyOverTime(new Location(30.2672, -97.7431)));
+    //Feedback: the result of getFlyOverTime should be human readable like "12:01AM"
+  }
+  
+  //Feedback: let's write a test to assign the instance of WebService to a reference of type IssInformationService
+}

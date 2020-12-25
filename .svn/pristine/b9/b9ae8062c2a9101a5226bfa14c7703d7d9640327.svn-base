@@ -1,0 +1,28 @@
+package processor;
+
+public interface Processor {
+
+  static String upperCaseConverterBlock(String input) {return input.toUpperCase();}
+
+  static String lowerCaseConverterBlock(String input) {
+    return input.toLowerCase();
+  }
+
+  static String multiplierBlock(String input) {return input.repeat(2);}
+
+  //Feedback: the following do the same but for different characters.
+  //Let's remove that duplication but at the same time keep the interface of the converter
+  //such that it receives a character to convert.
+
+
+  //Feedback: we work with input having one character, not many.
+  static String BlockerBlock(String input) {
+    return switch (input) {
+      case "z" -> input.replaceAll("z", "");
+      case "Z" -> input.replaceAll("Z", "");
+      case "k" -> input.replaceAll("k", "");
+      default -> input;
+    };
+  }
+
+}

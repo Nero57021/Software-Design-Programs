@@ -1,0 +1,43 @@
+x canary test
+
+uppercase:
+x convert "A" to "A"
+x convert "a" to "A"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+lowercase:
+x convert "A" to "a"
+x convert "a" to "a"
+x convert "1" to "1"
+x convert "~" to "~"
+x convert "" to ""
+
+multiplier:
+x convert "A" to "AA"
+x convert "a" to "aa"
+x convert "1" to "11"
+x convert "~" to "~~"
+x convert "" to ""
+
+k blocker:
+x convert "Ak" to "A"
+x convert "ak" to "a"
+x convert "1k" to "1"
+x convert "~k" to "~"
+x convert "k" to ""
+
+z blocker:
+x convert "Az" to "A"
+x convert "az" to "a"
+x convert "1z" to "1"
+x convert "~z" to "~"
+x convert "z" to ""
+
+Z blocker:
+x convert "AZ" to "A"
+x convert "aZ" to "a"
+x convert "1Z" to "1"
+x convert "~Z" to "~"
+x convert "Z" to ""

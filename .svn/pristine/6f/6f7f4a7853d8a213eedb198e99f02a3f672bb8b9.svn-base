@@ -1,0 +1,15 @@
+[Reviewed 10/03/20 11:56 AM MDT]
+synopsis:  very nice start
+
+details: 
+
+Very nice start. Good job so far.
+
+------------------------------------------------------------------------------
+[Reviewed 10/03/20 06:54 AM MDT]
+synopsis: red in coverage, let's try this again
+
+details:
+Please make sure to run coverage and make sure there is no red in the coverage report. If there is red (or yellow) please fix it or ask for help to fix it. Once the coverage report shows 100%, all green, please drop an email to ask for review.
+
+------------------------------------------------------------------------------

@@ -1,0 +1,46 @@
+package locator.ui;
+
+import locator.IssInformation;
+import locator.preview.Location;
+import locator.service.OpenNotifyAstronautWebService;
+import locator.service.OpenNotifyLocationWebService;
+
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class IssInformationApp {
+
+  public static void main(String[] args) {
+    IssInformation issInformation = new IssInformation();
+    OpenNotifyLocationWebService openNotifyLocationWebService = new OpenNotifyLocationWebService();
+    issInformation.setIssInformationService(openNotifyLocationWebService);
+    OpenNotifyAstronautWebService openNotifyAstronautWebService = new OpenNotifyAstronautWebService();
+
+    List<Location> fileLocations = new ArrayList<>();
+
+    try {
+      FileReader fr = new FileReader("locations.txt");
+
+      Scanner scanner = new Scanner(fr);
+      while (scanner.hasNextLine()) {
+        String[] lineArray = scanner.nextLine().split(",");
+        fileLocations.add(new Location(Double.parseDouble(lineArray[0]), Double.parseDouble(lineArray[1])));
+      }
+
+      Map<Location, String> locationTime = issInformation.getFlyOverTimeForLocations(fileLocations);
+
+      locationTime.forEach((key, value) -> System.out.println(key.lat() + ", " + key.lon() + ": " + value));
+      System.out.println("\n");
+      List<String> astronautsNames = openNotifyAstronautWebService.getAstronautNames();
+
+      System.out.println("There are " + astronautsNames.size() + " on ISS at this time:");
+      astronautsNames.forEach(System.out::println);
+
+    } catch (Exception ex) {
+      System.out.println(ex.getMessage());
+    }
+  }
+}

@@ -1,0 +1,14 @@
+package processor;
+
+public class Processor {
+
+  public String upperCaseConverterBlock(String input)
+  {
+    return input.toUpperCase();
+  }
+  public String lowerCaseConverterBlock(String input)
+  {
+    return input.toLowerCase();
+  }
+
+}

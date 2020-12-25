@@ -1,0 +1,21 @@
+package locator.service;
+
+import locator.preview.Location;
+
+public class WebService { //Feedback: Each time we define a variable (or name something): https://groups.google.com/g/uhcsf20sd/c/uHRAO-5aYFs/m/2K_8_4mtBAAJ
+
+  public String getRawResponse(String url) { //Feedback: let pass the Lat and Lon to this instead of the URL
+    return "{\"message\":\"success\",\"request\":{\"altitude\":100,\"datetime\":1602201251,\"latitude\":29.72167,\"longitude\":-95.343631,\"passes\":1},\"response\":[{\"duration\":645,\"risetime\":1602203714}]}";
+    //Feedback: why are we hard coding this stuff here intead of fetching the data from the webservice?
+  }
+
+  public String parseJSON(String rawJSON) {
+    return "1602203714";
+  }
+
+  public String getFlyOverTime(Location location) { //Feedback: let's call this getFlyOverTimeForLocation
+    String rawJSONResponse = getRawResponse(String.format("http://api.open-notify.org/iss-pass.json?lat=%f&lon=%f&n=1", location.lat(), location.lon()));
+
+    return parseJSON(rawJSONResponse);
+  }
+}

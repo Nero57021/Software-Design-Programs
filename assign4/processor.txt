@@ -1,0 +1,5 @@
+processor.BlockProcessor:upperCase
+processor.BlockProcessor:multiplier
+processor.BlockProcessor:createBlocker:Z
+processor.BlockProcessor:createBlocker:k
+processor.CustomBlocker:addDollar

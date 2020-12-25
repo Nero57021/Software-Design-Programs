@@ -1,0 +1,75 @@
+package locator;
+
+import locator.preview.Location;
+import locator.service.IssInformationService;
+import locator.service.WebService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+
+public class IssInformationServiceTest {
+  private final String VALID_JSON_RESPONSE = "{\"message\":\"success\",\"request\":{\"altitude\":100,\"datetime\":1602201251,\"latitude\":29.72167,\"longitude\":-95.343631,\"passes\":1},\"response\":[{\"duration\":645,\"risetime\":1602203714}]}";
+  private final String SAMPLE_URL = "http://api.open-notify.org/iss-pass.json?lat=29.721670&lon=-95.343631&n=1";
+
+  public IssInformation issInformation;
+  IssInformationService issInformationServiceMock;
+  WebService webServiceMock;
+
+  @BeforeEach
+  void init() {
+    issInformation = new IssInformation();
+    webServiceMock = mock(WebService.class);
+    issInformation.setIssInformationService(issInformationServiceMock);
+  }
+  @Test
+  void getRawResponseTakesURLReturnsPassesLatAndLong() {
+    doReturn(VALID_JSON_RESPONSE).when(webServiceMock).getRawResponse(SAMPLE_URL);
+
+    assertEquals(VALID_JSON_RESPONSE,webServiceMock.getRawResponse(SAMPLE_URL));
+
+    //Feedback: let's watch the above lines very carefully.
+    //doReturn ... that line created a stub/mock for getRawResponse.
+    //assertEquals... line is testing getRawResponse.
+
+    //We just tested the stub/mock. We should never test a stub or a mock.
+
+    // test ----> function being tested ----> dependency stubbed or mocked
+    //above good idea
+
+    //test ----> stub or mock
+    //above has no purpose
+  }
+
+  @Test
+  void parseJSONTakesRawJSONReturnsOneTime() {
+
+    doReturn("1602203714").when(webServiceMock).parseJSON(VALID_JSON_RESPONSE);
+
+    assertEquals("1602203714", webServiceMock.parseJSON(VALID_JSON_RESPONSE));
+  }
+
+  @Test
+  void parseJSONTakesRawJSONReturnsTwoTime() {
+    final String VALID_RESPONSE = "{\"message\":\"success\",\"request\":{\"altitude\":100,\"datetime\":1602207281,\"latitude\":30.2672,\"longitude\":-97.7431,\"passes\":1},\"response\":[{\"duration\":547,\"risetime\":1602209521}]}";
+
+    doReturn("1602203714").when(webServiceMock).parseJSON(VALID_JSON_RESPONSE);
+    doReturn("1602209521").when(webServiceMock).parseJSON(VALID_RESPONSE);
+
+    assertAll(
+            () -> assertEquals("1602203714", webServiceMock.parseJSON(VALID_JSON_RESPONSE)),
+            () -> assertEquals("1602209521", webServiceMock.parseJSON(VALID_RESPONSE))
+    );
+  }
+
+  @Test
+  void getFlyOverTimeTakesLocationReturnResponseFromParseJSON() {
+
+    doReturn("1602203714").when(webServiceMock).getFlyOverTime(new Location(29.7216704, -95.343631));
+
+    assertEquals("1602203714", webServiceMock.getFlyOverTime(new Location(29.7216704, -95.343631)));
+  }
+}

@@ -1,0 +1,41 @@
+package locator.service;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class OpenNotifyAstronautWebService {
+
+  public List<String> getAstronautNames() throws IOException, InterruptedException {
+    return parseJSON(getRawResponse());
+  }
+
+  String getRawResponse() throws IOException, InterruptedException {
+    HttpClient client = HttpClient.newHttpClient();
+    HttpRequest req = HttpRequest.newBuilder()
+      .uri(URI.create("http://api.open-notify.org/astros.json"))
+      .build();
+
+    HttpResponse<String> response = client.send(req, HttpResponse.BodyHandlers.ofString());
+    return response.body();
+  }
+
+  public List<String> parseJSON(String rawJSON) {
+
+    JSONObject obj = new JSONObject(rawJSON); //Feedback: the name "obj" makes me sad, it wants a better name.
+    JSONArray arrayOfAstronautsInfo = obj.getJSONArray("people");
+
+    return IntStream.range(0, arrayOfAstronautsInfo.length())
+      .mapToObj(astronauts -> arrayOfAstronautsInfo.getJSONObject(astronauts).getString("name"))
+      .collect(Collectors.toList());
+    //Feedback: nice work here. Curious, can we get an iterator from obj.getJSONObject("people") and get a Stream from it?
+  }
+}

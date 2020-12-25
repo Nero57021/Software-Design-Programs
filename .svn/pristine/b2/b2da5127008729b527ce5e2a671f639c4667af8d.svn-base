@@ -1,0 +1,12 @@
+package locator;
+
+import locator.preview.Location;
+import java.util.List;
+import java.util.Map;
+
+public interface IssLogic {
+	static Map<Location, String> computeTimeFromLocation(List<Location> coordinate) {
+  
+		return Map.of();
+  }
+}

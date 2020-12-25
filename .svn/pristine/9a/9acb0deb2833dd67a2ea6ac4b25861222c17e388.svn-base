@@ -1,0 +1,10 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public interface Factorial { //Feedback: no value, please remove
+
+  BigInteger factorial(long number);
+
+}
+

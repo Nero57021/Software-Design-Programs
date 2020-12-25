@@ -1,0 +1,25 @@
+package processor;
+
+public interface Processor {
+
+  final String blockerCases = "([zZk])";
+
+  static String upperCaseConverterBlock(String input) {
+    return input.toUpperCase();
+  }
+
+  static String lowerCaseConverterBlock(String input) {
+    return input.toLowerCase();
+  }
+
+  static String multiplierBlock(String input) {
+    StringBuilder builder = new StringBuilder();
+    input.chars().forEach(value -> builder.append((char) value).append((char) value));
+    return builder.toString();
+  }
+
+  static String blockerBlock(String input) {
+    return input.replaceAll(blockerCases, "");
+  }
+
+}

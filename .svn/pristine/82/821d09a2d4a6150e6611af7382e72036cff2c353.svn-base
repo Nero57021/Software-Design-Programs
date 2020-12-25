@@ -1,0 +1,7 @@
+package processor;
+
+public interface Processor {
+  static String upperCaseConverterBlock(String input) {
+    return input.toUpperCase();
+  }
+}

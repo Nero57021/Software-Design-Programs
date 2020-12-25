@@ -1,0 +1,9 @@
+package locator.service;
+
+import locator.preview.Location;
+
+import java.util.List;
+
+public interface IssInformationService {
+  String getFlyOverTimeForLocation(Location location);
+}

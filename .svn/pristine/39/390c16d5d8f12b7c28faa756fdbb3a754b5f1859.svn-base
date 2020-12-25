@@ -1,0 +1,11 @@
+package factorial;
+
+import java.math.BigInteger;
+
+public interface Factorial {
+BigInteger calculate(long num);
+
+default BigInteger factorial(long num){
+  return calculate(num);
+}
+  }
