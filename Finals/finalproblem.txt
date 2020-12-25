@@ -58,20 +58,3 @@ Given Number is Abundant
 
 BUILD SUCCESSFUL in 4s
 2 actionable tasks: 1 executed, 1 up-to-date
->
-
-Program deals with user input within stated expectations properly [10]:
-Tests pass [10]:
-Test Quality [10]:
-Code coverage [10]:
-Design quality [20]: -10
-Duplication of code between functions to compute the total of factorial.
-
-Code quality [10]: -3
-Space around operators.
-Inconsistent function names.
-Commented out stuff.
-
-Honoring immutability, using functional style [10]:
-
-Total [10]: 84
